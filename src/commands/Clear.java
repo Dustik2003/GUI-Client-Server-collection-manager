@@ -2,10 +2,7 @@ package commands;
 
 import worker.MapWorker;
 
-public class Clear extends Command{
-
-
-
+public class Clear extends Command {
 
 
     public Clear() {

@@ -3,23 +3,25 @@ package commands;
 import java.util.LinkedHashMap;
 
 public class CommandsDict {
-    final static LinkedHashMap<String,Command> commandsManger=new LinkedHashMap<>();
-    void fill(){
-        commandsManger.put("help",new Help());
-        commandsManger.put("info", new Info());
-        commandsManger.put("show",new Show());
-        commandsManger.put("insert",new Insert());
-        commandsManger.put("update",new Update());
-        commandsManger.put("remove_key",new RemoveKey());
-        commandsManger.put("clear",new Clear());
-        commandsManger.put("execute_script",new ExecuteScript());
-        commandsManger.put("exit", new Exit());
-        commandsManger.put("history",new History());
-        commandsManger.put("replace_if_greater",new ReplaceIfGreater());
-        commandsManger.put("remove_greater_key",new RemoveGreaterKey());
-        commandsManger.put("filter_by_salary",new FilterBySalary());
-        commandsManger.put("filter_starts_with_name",new FilterStartsWithName());
-        commandsManger.put("filter_less_than_status", new FilterLessThanStatus());
+    final static LinkedHashMap<String, Command> commandsManeger = new LinkedHashMap<>();
+
+    void fill() {
+        commandsManeger.put("help", new Help());
+        commandsManeger.put("info", new Info());
+        commandsManeger.put("show", new Show());
+        commandsManeger.put("insert", new Insert());
+        commandsManeger.put("update", new Update());
+        commandsManeger.put("remove_key", new RemoveKey());
+        commandsManeger.put("clear", new Clear());
+        commandsManeger.put("save", new Save());
+        commandsManeger.put("execute_script", new ExecuteScript());
+        commandsManeger.put("exit", new Exit());
+        commandsManeger.put("history", new History());
+        commandsManeger.put("replace_if_greater", new ReplaceIfGreater());
+        commandsManeger.put("remove_greater_key", new RemoveGreaterKey());
+        commandsManeger.put("filter_by_salary", new FilterBySalary());
+        commandsManeger.put("filter_starts_with_name", new FilterStartsWithName());
+        commandsManeger.put("filter_less_than_status", new FilterLessThanStatus());
     }
 
     public CommandsDict() {
@@ -27,6 +29,6 @@ public class CommandsDict {
     }
 
     public LinkedHashMap<String, Command> getCommandsManger() {
-        return commandsManger;
+        return commandsManeger;
     }
 }

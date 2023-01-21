@@ -13,19 +13,21 @@ public class Coordinates implements Validatable {
     }
 
     public static Float setX() {
-        Float x=null;
-        boolean flag=false;
+        Float x = null;
+        boolean flag = false;
         System.out.print("Input coordinates.x:\n>>");
-        try{
-            x=new Scanner(System.in).nextFloat();
-        }catch(InputMismatchException ex){flag=true;}
-        while(x==null || flag){
-            flag=false;
+        try {
+            x = new Scanner(System.in).nextFloat();
+        } catch (InputMismatchException ex) {
+            flag = true;
+        }
+        while (x == null || flag) {
+            flag = false;
             System.out.print("!!!Input coordinates.x again!!!(Coordinates.x can't be equals null)\n>>");
-            try{
-                x=new Scanner(System.in).nextFloat();
-            }catch(InputMismatchException ex){
-                flag=true;
+            try {
+                x = new Scanner(System.in).nextFloat();
+            } catch (InputMismatchException ex) {
+                flag = true;
             }
         }
         return x;
@@ -33,29 +35,37 @@ public class Coordinates implements Validatable {
 
 
     public static double setY() {
-        double y=0;
-        boolean flag=false;
+        double y = 0;
+        boolean flag = false;
         System.out.print("Input coordinates.y:\n>>");
-        try{
-            y=new Scanner(System.in).nextDouble();
-        }catch(InputMismatchException ex){flag=true;}
-        while(flag){
-            flag=false;
+        try {
+            y = new Scanner(System.in).nextDouble();
+        } catch (InputMismatchException ex) {
+            flag = true;
+        }
+        while (flag) {
+            flag = false;
             System.out.print("!!!Input coordinates.y again!!!\n>>");
-            try{
-                y=new Scanner(System.in).nextDouble();
-            }catch(InputMismatchException ex){
-                flag=true;
+            try {
+                y = new Scanner(System.in).nextDouble();
+            } catch (InputMismatchException ex) {
+                flag = true;
             }
         }
         return y;
     }
 
+    public double getY() {
+        return y;
+    }
 
+    public Float getX() {
+        return x;
+    }
 
     @Override
     public boolean validate() {
-        return x!=null;
+        return x != null;
     }
 
     @Override

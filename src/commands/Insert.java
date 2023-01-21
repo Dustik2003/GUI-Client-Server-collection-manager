@@ -13,9 +13,9 @@ public class Insert extends CommandsWithElements {
 
     @Override
     public void execute() {
-        if (!MapWorker.getWorkers().containsKey(Long.parseLong(getArg()))){
-            MapWorker.getWorkers().put(Long.parseLong(getArg()), dataLoader());}
-        else{
+        if (!MapWorker.getWorkers().containsKey(Long.parseLong(getArg()))) {
+            MapWorker.getWorkers().put(Long.parseLong(getArg()), dataLoader());
+        } else {
             System.out.println("!!!Map contains entered id!!!");
         }
     }

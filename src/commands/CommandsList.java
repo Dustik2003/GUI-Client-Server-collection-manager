@@ -23,10 +23,10 @@ public enum CommandsList {
     ;
 
     private final String title;
-//    private final Command commandPattern;
+    //    private final Command commandPattern;
     private final String description;
 
-    CommandsList(String title, Command commandPattern, String description){
+    CommandsList(String title, Command commandPattern, String description) {
         this.title = title;
         this.description = description;
 //        this.commandPattern = commandPattern;

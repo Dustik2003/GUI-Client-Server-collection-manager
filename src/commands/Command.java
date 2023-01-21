@@ -2,10 +2,10 @@ package commands;
 
 import java.util.Scanner;
 
-public abstract class Command implements Executable{
-    Scanner cin=new Scanner(System.in);
+public abstract class Command implements Executable {
+    Scanner cin = new Scanner(System.in);
     private final String desc;
-    String arg="";
+    String arg = "";
 
     public Command(String title) {
         this.desc = title;

@@ -9,8 +9,8 @@ public class Help extends Command {
 
     @Override
     public void execute() {
-        for (String cmd: CommandsDict.commandsManger.keySet()){
-            System.out.println(cmd+":"+CommandsDict.commandsManger.get(cmd).getDesc());
+        for (String cmd : CommandsDict.commandsManeger.keySet()) {
+            System.out.println(cmd + ":" + CommandsDict.commandsManeger.get(cmd).getDesc());
         }
     }
 

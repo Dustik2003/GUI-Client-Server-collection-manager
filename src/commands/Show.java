@@ -2,12 +2,14 @@ package commands;
 
 import worker.MapWorker;
 
-public class Show extends Command{
+public class Show extends Command {
 
 
     @Override
     public void execute() {
-        System.out.println(MapWorker.getWorkers().toString());
+        for (Long id : MapWorker.getWorkers().keySet()) {
+            System.out.println(id + "=" + MapWorker.getWorkers().get(id).toString());
+        }
     }
 
     public Show() {

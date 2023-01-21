@@ -14,13 +14,14 @@ public class CommandsWithElements extends CommandWithArg {
     }
 
 
-    boolean yesOrNo(String field){
-        if(!this.stream)
-            System.out.println("Input y/n if you want input "+field);
-        if(cin.nextLine().equals("y"))
+    boolean yesOrNo(String field) {
+        if (!this.stream)
+            System.out.println("Input y/n if you want input " + field);
+        if (cin.nextLine().equals("y"))
             return true;
         return false;
     }
+
     protected Worker dataLoader() {
         if (!this.stream) {
             System.out.print("Input name:\n>>");
@@ -59,6 +60,6 @@ public class CommandsWithElements extends CommandWithArg {
 
     public CommandsWithElements(String desc) {
         super(desc);
-        this.stream=false;
+        this.stream = false;
     }
 }

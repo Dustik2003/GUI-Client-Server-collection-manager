@@ -3,12 +3,13 @@ package worker;
 import java.util.Date;
 import java.util.Scanner;
 
+
 public class Worker {
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
-    private java.util.Date creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    private Date creationDate = new Date(); //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private double salary; //Значение поля должно быть больше 0
-    private java.util.Date endDate; //Поле может быть null
+    private Date endDate; //Поле может быть null
     private Position position; //Поле может быть null
     private Status status; //Поле может быть null
     private Organization organization; //Поле не может быть null
@@ -22,8 +23,28 @@ public class Worker {
         return name;
     }
 
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
     public double getSalary() {
         return salary;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public Organization getOrganization() {
+        return organization;
     }
 
     public static String setName(String name) {
@@ -76,7 +97,7 @@ public class Worker {
     public Worker(String name, Coordinates coordinates, double salary, Position position, Status status, Organization organization) {
         this.name = setName(name);
         this.coordinates = setCoordinates(coordinates);
-        this.creationDate = new Date();
+//        this.creationDate = new Date();
         this.salary = setSalary(salary);
         this.position = position;
         this.status = status;
@@ -86,7 +107,7 @@ public class Worker {
     public Worker(String name, Coordinates coordinates, double salary, Date endDate, Status status, Organization organization) {
         this.name = setName(name);
         this.coordinates = setCoordinates(coordinates);
-        this.creationDate = new Date();
+//        this.creationDate = new Date();
         this.salary = setSalary(salary);
         this.endDate = endDate;
         this.status = status;
@@ -96,7 +117,7 @@ public class Worker {
     public Worker(String name, Coordinates coordinates, double salary, Date endDate, Position position, Organization organization) {
         this.name = setName(name);
         this.coordinates = setCoordinates(coordinates);
-        this.creationDate = new Date();
+//        this.creationDate = new Date();
         this.salary = setSalary(salary);
         this.endDate = endDate;
         this.position = position;
@@ -106,7 +127,7 @@ public class Worker {
     public Worker(String name, Coordinates coordinates, double salary, Status status, Organization organization) {
         this.name = setName(name);
         this.coordinates = setCoordinates(coordinates);
-        this.creationDate = new Date();
+//        this.creationDate = new Date();
         this.salary = setSalary(salary);
         this.status = status;
         this.organization = setOrganization(organization);
@@ -115,7 +136,7 @@ public class Worker {
     public Worker(String name, Coordinates coordinates, double salary, Date endDate, Position position, Status status, Organization organization) {
         this.name = setName(name);
         this.coordinates = setCoordinates(coordinates);
-        this.creationDate = new Date();
+//        this.creationDate = new Date();
         this.salary = setSalary(salary);
         this.endDate = endDate;
         this.position = position;
@@ -128,7 +149,18 @@ public class Worker {
         this.coordinates = setCoordinates(coordinates);
         this.salary = setSalary(salary);
         this.organization = setOrganization(organization);
-        this.creationDate = new Date();
+//        this.creationDate = new Date();
+    }
+
+    public Worker(String name, Coordinates coordinates, Date creationDate, double salary, Date endDate, Position position, Status status, Organization organization) {
+        this.name = name;
+        this.coordinates = coordinates;
+        this.creationDate = creationDate;
+        this.salary = salary;
+        this.endDate = endDate;
+        this.position = position;
+        this.status = status;
+        this.organization = organization;
     }
 
     @Override
@@ -144,4 +176,10 @@ public class Worker {
                 ", organization=" + organization +
                 '}';
     }
+
+    public Worker(String name) {
+        this.name = name;
+    }
+
+
 }
