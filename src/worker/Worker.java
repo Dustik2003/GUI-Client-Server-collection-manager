@@ -85,6 +85,18 @@ public class Worker {
         return organization;
     }
 
+    public Date setEndDate() {
+        System.out.println("Input endDate in format dd:mm:yyyy");
+        String[] date=new Scanner(System.in).nextLine().split(":");
+        Date endDate=new Date(10);
+        while(date.length!=3 || Integer.parseInt(date[0])<0 ||Integer.parseInt(date[0])>31 || Integer.parseInt(date[2])<0 ||Integer.parseInt(date[0])>12 || Integer.parseInt(date[2])<2000 || (Integer.parseInt(date[1])==2 && Integer.parseInt(date[0])>29) ){
+            System.out.println("!!!Error!!! Try again in format dd:mm:yyyy");
+            date=new Scanner(System.in).nextLine().split(":");
+        }
+
+        return endDate;
+    }
+
     public boolean moreThan(Worker worker) {
         if (worker.position == null)
             return false;
@@ -94,35 +106,8 @@ public class Worker {
     }
 
 
-    public Worker(String name, Coordinates coordinates, double salary, Position position, Status status, Organization organization) {
-        this.name = setName(name);
-        this.coordinates = setCoordinates(coordinates);
-//        this.creationDate = new Date();
-        this.salary = setSalary(salary);
-        this.position = position;
-        this.status = status;
-        this.organization = setOrganization(organization);
-    }
 
-    public Worker(String name, Coordinates coordinates, double salary, Date endDate, Status status, Organization organization) {
-        this.name = setName(name);
-        this.coordinates = setCoordinates(coordinates);
-//        this.creationDate = new Date();
-        this.salary = setSalary(salary);
-        this.endDate = endDate;
-        this.status = status;
-        this.organization = setOrganization(organization);
-    }
 
-    public Worker(String name, Coordinates coordinates, double salary, Date endDate, Position position, Organization organization) {
-        this.name = setName(name);
-        this.coordinates = setCoordinates(coordinates);
-//        this.creationDate = new Date();
-        this.salary = setSalary(salary);
-        this.endDate = endDate;
-        this.position = position;
-        this.organization = setOrganization(organization);
-    }
 
     public Worker(String name, Coordinates coordinates, double salary, Status status, Organization organization) {
         this.name = setName(name);
@@ -133,16 +118,7 @@ public class Worker {
         this.organization = setOrganization(organization);
     }
 
-    public Worker(String name, Coordinates coordinates, double salary, Date endDate, Position position, Status status, Organization organization) {
-        this.name = setName(name);
-        this.coordinates = setCoordinates(coordinates);
-//        this.creationDate = new Date();
-        this.salary = setSalary(salary);
-        this.endDate = endDate;
-        this.position = position;
-        this.status = status;
-        this.organization = setOrganization(organization);
-    }
+
 
     public Worker(String name, Coordinates coordinates, double salary, Organization organization) {
         this.name = setName(name);
@@ -156,6 +132,16 @@ public class Worker {
         this.name = name;
         this.coordinates = coordinates;
         this.creationDate = creationDate;
+        this.salary = salary;
+        this.endDate = endDate;
+        this.position = position;
+        this.status = status;
+        this.organization = organization;
+    }
+
+    public Worker(String name, Coordinates coordinates, double salary, Date endDate, Position position, Status status, Organization organization) {
+        this.name = name;
+        this.coordinates = coordinates;
         this.salary = salary;
         this.endDate = endDate;
         this.position = position;
@@ -180,6 +166,8 @@ public class Worker {
     public Worker(String name) {
         this.name = name;
     }
+
+
 
 
 }
