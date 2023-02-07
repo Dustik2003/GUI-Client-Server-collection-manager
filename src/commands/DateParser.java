@@ -13,7 +13,6 @@ public class DateParser {
         for (Months m : Months.values()) {
             if (dates[1].equals(m.toString())) {
                 dt += (!dates[1].equals("Jan") && !dates[1].equals("Feb") && Integer.parseInt(dates[5]) % 4 == 0) ? 1 : 0;
-                ;
                 break;
             }
             dt += m.getDct();

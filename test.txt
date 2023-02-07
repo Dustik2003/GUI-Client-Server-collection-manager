@@ -1,8 +1,0 @@
-show
-help
-insert 20
-Parviz
-123
-123
-123
-GOVERNMENT

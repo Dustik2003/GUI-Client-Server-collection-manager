@@ -7,11 +7,10 @@ import worker.*;
 
 
 public class Main {
-    static Long key = 0L;
-
     public static void main(String[] args) {
         Scanner cin = new Scanner(System.in);
-        new MapWorker();
+        FileReader.readFile("output.csv");
+//        FileReader.readFile(System.getenv("CollectionFile"));
         while (true) {
             System.out.print(">>");
             String[] commandName = cin.nextLine().trim().split(" ");
