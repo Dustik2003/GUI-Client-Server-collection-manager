@@ -7,7 +7,7 @@ import java.io.*;
 
 public class Save extends Command {
     public Save() {
-        super("????????? ????????? ? ????");
+        super("сохранить коллекцию в файл");
     }
 
     @Override
@@ -21,7 +21,9 @@ public class Save extends Command {
 
         try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream("output.csv"))) {
             writer.write(sb.toString());
-        } catch (Exception e) {
+        }catch (FileNotFoundException e){
+            System.out.println("File not found or you do not have permissions");
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

@@ -1,6 +1,8 @@
 package worker;
 
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -9,7 +11,7 @@ public class Worker {
     private Coordinates coordinates; //Поле не может быть null
     private Date creationDate = new Date(); //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private double salary; //Значение поля должно быть больше 0
-    private Date endDate; //Поле может быть null
+    private LocalDate endDate; //Поле может быть null
     private Position position; //Поле может быть null
     private Status status; //Поле может быть null
     private Organization organization; //Поле не может быть null
@@ -35,7 +37,7 @@ public class Worker {
         return salary;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
@@ -68,10 +70,27 @@ public class Worker {
     }
 
 
-    public static Double setSalary(double salary) {
-        while (salary <= 0) {
+    public static Double setSalary() {
+
+        System.out.print("Input salary:\n>>");
+        boolean flag = false;
+        String st=new Scanner(System.in).nextLine().trim();
+        double salary=0D;
+        try {
+            salary = Double.parseDouble(st);
+        } catch (InputMismatchException |NumberFormatException ex) {
+            flag = true;
+        }
+
+        while (salary <= 0||flag||st.equals("")) {
+            flag=false;
             System.out.print("!!!Input salary again!!!(Salary must be more than 0)\n>>");
-            salary = new Scanner(System.in).nextDouble();
+            try {
+                st=new Scanner(System.in).nextLine().trim();
+                salary = Double.parseDouble(st);
+            } catch (InputMismatchException|NumberFormatException ex) {
+                flag = true;
+            }
         }
         return salary;
     }
@@ -114,7 +133,7 @@ public class Worker {
         }
         while (status == null || flag) {
             flag = false;
-            System.out.print("!!!Input status again!!!(Status takes one of the values:\nFIRED(0),\nRECOMMENDED_FOR_PROMOTION(1),\nREGULAR(2);>>");
+            System.out.print("!!!Input status again!!!(Status takes one of the values:\nFIRED,\nRECOMMENDED_FOR_PROMOTION,\nREGULAR;>>");
             pos=new Scanner(System.in).nextLine().trim();
             if(pos.equals(""))return null;
             try {
@@ -136,34 +155,28 @@ public class Worker {
         return organization;
     }
 
-    public Date setEndDate(Scanner cin) {
-        System.out.println("Input endDate in format dd:mm:yyyy");
-        String[] date = new Scanner(System.in).nextLine().split(":");
-        Date endDate = new Date(10);
-        int day=0, month=0, year=0;
+    public static LocalDate setEndDate() {
+        System.out.print("Input endDate in format dd:mm:yyyy\n>>");
         boolean flag=false;
+        LocalDate endDate=null;
+        String st=new Scanner(System.in).nextLine();
+        if(st.equals(""))return null;
         try {
-            day = Integer.parseInt(date[0]);
-            month = Integer.parseInt(date[1]);
-            year = Integer.parseInt(date[2]);
-        }catch(Exception e){flag=true;}
-        while (date.length != 3 || flag || day <= 0 || day > 31 || month <= 0 || month > 12 || Integer.parseInt(date[2]) < 2000 || (year % 4 != 0 && month == 2 && day > 28) || (year % 4 == 0 && month == 2 && day > 29)) {
-            System.out.println("!!!Error!!! Try again in format dd:mm:yyyy");
-            date = new Scanner(System.in).nextLine().split(":");
+            endDate=LocalDate.parse(st);
+        }catch(Exception e){
+            flag=true;
+        }
+        while (flag) {
+            System.out.print("!!!Error!!! Try again in format yyyy-mm-dd\n>>");
+            st=new Scanner(System.in).nextLine();
+            if(st.equals(""))return null;
             try {
-                day = Integer.parseInt(date[0]);
-                month = Integer.parseInt(date[1]);
-                year = Integer.parseInt(date[2]);
-                flag=false;
-            } catch (Exception e) {flag=true;}
+                endDate=LocalDate.parse(st);
+            }catch(Exception e){
+                flag=true;
+            }
         }
-        int i = 0;
-        for (Months m : Months.values()) {
-            if (i == month) break;
-            day += m.getDct();
-            i++;
-        }
-        return new Date((year - 2) / 4 * 31622400000L + (year - ((year - 2) / 4)) * 31536000000L + (day * 24L - 3) * 3600 * 1000);
+        return endDate;
     }
 
     public boolean moreThan(Worker worker) {
@@ -179,7 +192,7 @@ public class Worker {
         this.name = setName(name);
         this.coordinates = setCoordinates(coordinates);
 
-        this.salary = setSalary(salary);
+        this.salary = salary;
         this.status = status;
         this.organization = setOrganization(organization);
     }
@@ -188,21 +201,21 @@ public class Worker {
     public Worker(String name, Coordinates coordinates, double salary, Organization organization) {
         this.name = setName(name);
         this.coordinates = setCoordinates(coordinates);
-        this.salary = setSalary(salary);
+        this.salary = salary;
         this.organization = setOrganization(organization);
 
     }
     public Worker(String name, Coordinates coordinates, double salary, Position position, Status status, Organization organization) {
         this.name = setName(name);
         this.coordinates = setCoordinates(coordinates);
-        this.salary = setSalary(salary);
+        this.salary = salary;
         this.name = name;
         this.position = position;
         this.status = status;
         this.organization = setOrganization(organization);
     }
 
-    public Worker(String name, Coordinates coordinates, Date creationDate, double salary, Date endDate, Position position, Status status, Organization organization) {
+    public Worker(String name, Coordinates coordinates, Date creationDate, double salary, LocalDate endDate, Position position, Status status, Organization organization) {
         this.name = name;
         this.coordinates = coordinates;
         this.creationDate = creationDate;
@@ -213,7 +226,7 @@ public class Worker {
         this.organization = organization;
     }
 
-    public Worker(String name, Coordinates coordinates, double salary, Date endDate, Position position, Status status, Organization organization) {
+    public Worker(String name, Coordinates coordinates, double salary, LocalDate endDate, Position position, Status status, Organization organization) {
         this.name = name;
         this.coordinates = coordinates;
         this.salary = salary;
@@ -222,6 +235,7 @@ public class Worker {
         this.status = status;
         this.organization = organization;
     }
+
 
 
 

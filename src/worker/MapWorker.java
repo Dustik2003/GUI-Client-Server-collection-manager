@@ -1,11 +1,13 @@
 package worker;
 
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Random;
 
 public class MapWorker {
 
     public static LinkedHashMap<Long, Worker> workers = new LinkedHashMap<>();
+    public static Date date=new Date();
 
 
     public static void fill() {
@@ -21,6 +23,7 @@ public class MapWorker {
     }
 
     public MapWorker() {
+        date=new Date();
         fill();
     }
 
@@ -35,6 +38,7 @@ public class MapWorker {
     public static LinkedHashMap<Long, Worker> getWorkers() {
         return workers;
     }
+
 
     @Override
     public String toString() {

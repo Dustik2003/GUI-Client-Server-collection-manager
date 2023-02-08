@@ -2,6 +2,7 @@ package commands;
 
 import worker.*;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class CommandsWithElements extends CommandWithArg {
@@ -28,19 +29,21 @@ public class CommandsWithElements extends CommandWithArg {
             String name = Worker.setName(cin.nextLine());
             Float x = Coordinates.setX();
             double y = Coordinates.setY();
-            System.out.print("Input salary:\n>>");
-            double salary=Worker.setSalary(cin.nextDouble());
             Coordinates coordinates = Worker.setCoordinates(new Coordinates(x, y));
+            double salary=Worker.setSalary();
+            LocalDate endDate=Worker.setEndDate();
             Position position=Worker.setPosition();
             Status status=Worker.setStatus();
             Organization organization = Worker.setOrganization(new Organization(Organization.setEmployeesCount(), Organization.setType()));
-            return new Worker(Worker.setName(name), coordinates, Worker.setSalary(salary),position,status, organization);
+            return new Worker(Worker.setName(name), coordinates, salary,endDate,position,status, organization);
         } else {
             String name = cin.nextLine();
             Float x = cin.nextFloat();
             double y = cin.nextDouble();
             double salary=cin.nextDouble();
             cin.nextLine();
+            String st= cin.nextLine();
+            LocalDate endDate=st.equals("")?null:LocalDate.parse(st);
             String posStat=cin.nextLine();
             Position position=posStat.equals("")?null:Position.valueOf(posStat);
             posStat=cin.nextLine();
@@ -48,7 +51,7 @@ public class CommandsWithElements extends CommandWithArg {
             int employeesCount = cin.nextInt();
             cin.nextLine();
             OrganizationType organizationType = OrganizationType.valueOf(cin.nextLine());
-            return new Worker(Worker.setName(name), Worker.setCoordinates(new Coordinates(x, y)), Worker.setSalary(salary),position,status, Worker.setOrganization(new Organization(employeesCount, organizationType)));
+            return new Worker(Worker.setName(name), Worker.setCoordinates(new Coordinates(x, y)), salary,endDate,position,status, Worker.setOrganization(new Organization(employeesCount, organizationType)));
         }
     }
 

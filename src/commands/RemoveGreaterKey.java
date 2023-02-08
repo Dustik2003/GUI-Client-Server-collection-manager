@@ -18,6 +18,10 @@ public class RemoveGreaterKey extends CommandWithArg {
         for (Long id : MapWorker.getWorkers().keySet()) {
             if (id > minId) keys.add(id);
         }
+        if(keys.size()==0) {
+            System.out.println("Element with given parameter not found");
+            return;
+        }
         for (Long id : keys) {
             MapWorker.getWorkers().remove(id);
         }

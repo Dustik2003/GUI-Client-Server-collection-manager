@@ -16,17 +16,19 @@ public class Coordinates implements Validatable {
         Float x = null;
         boolean flag = false;
         System.out.print("Input coordinates.x:\n>>");
+        String st=new Scanner(System.in).nextLine().trim();
         try {
-            x = new Scanner(System.in).nextFloat();
-        } catch (InputMismatchException ex) {
+            x = Float.parseFloat(st);
+        } catch (InputMismatchException|NumberFormatException ex) {
             flag = true;
         }
         while (x == null || flag) {
             flag = false;
             System.out.print("!!!Input coordinates.x again!!!(Coordinates.x can't be equals null)\n>>");
             try {
-                x = new Scanner(System.in).nextFloat();
-            } catch (InputMismatchException ex) {
+                st=new Scanner(System.in).nextLine().trim();
+                x = Float.parseFloat(st);
+            } catch (InputMismatchException|NumberFormatException ex) {
                 flag = true;
             }
         }
@@ -38,17 +40,19 @@ public class Coordinates implements Validatable {
         double y = 0;
         boolean flag = false;
         System.out.print("Input coordinates.y:\n>>");
+        String st=new Scanner(System.in).nextLine().trim();
         try {
-            y = new Scanner(System.in).nextDouble();
-        } catch (InputMismatchException ex) {
+            y = Double.parseDouble(st);
+        } catch (InputMismatchException|NumberFormatException ex) {
             flag = true;
         }
-        while (flag) {
+        while (flag|| st.equals("")) {
             flag = false;
             System.out.print("!!!Input coordinates.y again!!!\n>>");
             try {
-                y = new Scanner(System.in).nextDouble();
-            } catch (InputMismatchException ex) {
+                st=new Scanner(System.in).nextLine().trim();
+                y = Double.parseDouble(st);
+            } catch (InputMismatchException|NumberFormatException ex) {
                 flag = true;
             }
         }
