@@ -41,9 +41,9 @@ public class CommandsWithElements extends CommandWithArg {
             Float x = cin.nextFloat();
             double y = cin.nextDouble();
             double salary=cin.nextDouble();
-            cin.nextLine();
             String st= cin.nextLine();
             LocalDate endDate=st.equals("")?null:LocalDate.parse(st);
+            cin.nextLine();
             String posStat=cin.nextLine();
             Position position=posStat.equals("")?null:Position.valueOf(posStat);
             posStat=cin.nextLine();

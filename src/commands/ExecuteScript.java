@@ -27,7 +27,10 @@ public class ExecuteScript extends CommandWithArg {
                     cmd.setCin(cin);
                 }
                 if (!arg.equals(cmd.getArg())) {
+                    System.out.println(commandName[0]+ ":");
+                    System.out.println();
                     cmd.execute();
+                    System.out.println("\n");
                 } else {
                     System.out.println("!!!File exists command with entered filename!!!");
                 }
