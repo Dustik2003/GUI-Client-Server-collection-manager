@@ -19,7 +19,6 @@ public class FileReader {
             }
         } catch (Exception e) {
             e.getStackTrace();
-            System.exit(0);
         }
         String[] lines = sb.toString().split("\n");
         for (String line : lines) {

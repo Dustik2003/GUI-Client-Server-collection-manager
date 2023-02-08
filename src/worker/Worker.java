@@ -167,6 +167,7 @@ public class Worker {
             flag=true;
         }
         while (flag) {
+            flag=false;
             System.out.print("!!!Error!!! Try again in format yyyy-mm-dd\n>>");
             st=new Scanner(System.in).nextLine();
             if(st.equals(""))return null;

@@ -1,4 +1,6 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
+import java.util.logging.SocketHandler;
 
 import commands.Command;
 import commands.CommandsDict;
@@ -10,7 +12,13 @@ public class Main {
     public static void main(String[] args) {
         Scanner cin = new Scanner(System.in);
         FileReader.readFile("output.csv");
-//        FileReader.readFile(System.getenv("CollectionFile"));
+        String st=System.getenv("CollectionFile");
+        try{
+            FileReader.readFile(st);
+        }catch (Exception e){
+            System.out.println("FIle was empty or variable wasn't set.(Set the variable CollectionFile by command export)");
+            System.out.println("Now Collection is empty!!!");
+        }
         while (true) {
             System.out.print(">>");
             String[] commandName = cin.nextLine().trim().split(" ");
