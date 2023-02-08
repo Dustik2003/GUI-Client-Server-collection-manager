@@ -76,6 +76,57 @@ public class Worker {
         return salary;
     }
 
+    public static Position setPosition() {
+        Position position=null;
+        boolean flag=false;
+        System.out.print("Input position\n>>");
+        String pos=new Scanner(System.in).nextLine().trim();
+        if(pos.equals(""))return null;
+        try {
+            position = Position.valueOf(pos);
+        } catch (IllegalArgumentException ex) {
+            flag = true;
+        }
+        while (position == null || flag) {
+            flag = false;
+            System.out.print("!!!Input position again!!!(Position takes one of the values:\nMANAGER,\nHEAD_OF_DIVISION,\nDEVELOPER,\nBAKER,\nCLEANER\n>>");
+            pos=new Scanner(System.in).nextLine().trim();
+            if(pos.equals(""))return null;
+            try {
+                position = Position.valueOf(pos);
+            } catch (IllegalArgumentException ex) {
+                flag = true;
+            }
+        }
+        return position;
+    }
+
+    public static Status setStatus() {
+        Status status=null;
+        boolean flag=false;
+        System.out.print("Input status\n>>");
+        String pos=new Scanner(System.in).nextLine().trim();
+        if(pos.equals(""))return null;
+        try {
+            status = Status.valueOf(pos);
+        } catch (IllegalArgumentException ex) {
+            flag = true;
+        }
+        while (status == null || flag) {
+            flag = false;
+            System.out.print("!!!Input status again!!!(Status takes one of the values:\nFIRED(0),\nRECOMMENDED_FOR_PROMOTION(1),\nREGULAR(2);>>");
+            pos=new Scanner(System.in).nextLine().trim();
+            if(pos.equals(""))return null;
+            try {
+                status = Status.valueOf(pos);
+            } catch (IllegalArgumentException ex) {
+                flag = true;
+            }
+        }
+        return status;
+    }
+
+
     public static Organization setOrganization(Organization organization) {
         while (organization == null && !organization.validate()) {
             System.out.print("!!!Input organization again!!!(Organization can't be null, emloyees count must be more than 0 and OrganizationType takes one of the values:\nGOVERNMENT,\nTRUST,\nOPEN_JOINT_STOCK_COMPANY)\n>>");
@@ -85,16 +136,34 @@ public class Worker {
         return organization;
     }
 
-    public Date setEndDate() {
+    public Date setEndDate(Scanner cin) {
         System.out.println("Input endDate in format dd:mm:yyyy");
-        String[] date=new Scanner(System.in).nextLine().split(":");
-        Date endDate=new Date(10);
-        while(date.length!=3 || Integer.parseInt(date[0])<0 ||Integer.parseInt(date[0])>31 || Integer.parseInt(date[2])<0 ||Integer.parseInt(date[0])>12 || Integer.parseInt(date[2])<2000 || (Integer.parseInt(date[1])==2 && Integer.parseInt(date[0])>29) ){
+        String[] date = new Scanner(System.in).nextLine().split(":");
+        Date endDate = new Date(10);
+        int day=0, month=0, year=0;
+        boolean flag=false;
+        try {
+            day = Integer.parseInt(date[0]);
+            month = Integer.parseInt(date[1]);
+            year = Integer.parseInt(date[2]);
+        }catch(Exception e){flag=true;}
+        while (date.length != 3 || flag || day <= 0 || day > 31 || month <= 0 || month > 12 || Integer.parseInt(date[2]) < 2000 || (year % 4 != 0 && month == 2 && day > 28) || (year % 4 == 0 && month == 2 && day > 29)) {
             System.out.println("!!!Error!!! Try again in format dd:mm:yyyy");
-            date=new Scanner(System.in).nextLine().split(":");
+            date = new Scanner(System.in).nextLine().split(":");
+            try {
+                day = Integer.parseInt(date[0]);
+                month = Integer.parseInt(date[1]);
+                year = Integer.parseInt(date[2]);
+                flag=false;
+            } catch (Exception e) {flag=true;}
         }
-
-        return endDate;
+        int i = 0;
+        for (Months m : Months.values()) {
+            if (i == month) break;
+            day += m.getDct();
+            i++;
+        }
+        return new Date((year - 2) / 4 * 31622400000L + (year - ((year - 2) / 4)) * 31536000000L + (day * 24L - 3) * 3600 * 1000);
     }
 
     public boolean moreThan(Worker worker) {
@@ -106,18 +175,14 @@ public class Worker {
     }
 
 
-
-
-
     public Worker(String name, Coordinates coordinates, double salary, Status status, Organization organization) {
         this.name = setName(name);
         this.coordinates = setCoordinates(coordinates);
-//        this.creationDate = new Date();
+
         this.salary = setSalary(salary);
         this.status = status;
         this.organization = setOrganization(organization);
     }
-
 
 
     public Worker(String name, Coordinates coordinates, double salary, Organization organization) {
@@ -125,7 +190,16 @@ public class Worker {
         this.coordinates = setCoordinates(coordinates);
         this.salary = setSalary(salary);
         this.organization = setOrganization(organization);
-//        this.creationDate = new Date();
+
+    }
+    public Worker(String name, Coordinates coordinates, double salary, Position position, Status status, Organization organization) {
+        this.name = setName(name);
+        this.coordinates = setCoordinates(coordinates);
+        this.salary = setSalary(salary);
+        this.name = name;
+        this.position = position;
+        this.status = status;
+        this.organization = setOrganization(organization);
     }
 
     public Worker(String name, Coordinates coordinates, Date creationDate, double salary, Date endDate, Position position, Status status, Organization organization) {
@@ -149,6 +223,9 @@ public class Worker {
         this.organization = organization;
     }
 
+
+
+
     @Override
     public String toString() {
         return "Worker{" +
@@ -166,8 +243,5 @@ public class Worker {
     public Worker(String name) {
         this.name = name;
     }
-
-
-
 
 }

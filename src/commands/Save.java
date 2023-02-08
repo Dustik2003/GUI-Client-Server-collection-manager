@@ -7,7 +7,7 @@ import java.io.*;
 
 public class Save extends Command {
     public Save() {
-        super("сохранить коллекцию в файл");
+        super("????????? ????????? ? ????");
     }
 
     @Override
@@ -19,7 +19,7 @@ public class Save extends Command {
             sb.append(id + "," + tmp.getName() + "," + tmp.getCoordinates().getX() + "," + tmp.getCoordinates().getY() + "," + tmp.getCreationDate() + "," + tmp.getSalary() + "," + (tmp.getEndDate() == null ? "" : tmp.getEndDate()) + "," + (tmp.getPosition() == null ? "" : tmp.getPosition()) + "," + (tmp.getStatus() == null ? "" : tmp.getStatus()) + "," + tmp.getOrganization().getEmployeesCount() + "," + tmp.getOrganization().getType() + "\n");
         }
 
-        try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream("test.csv"))) {
+        try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream("output.csv"))) {
             writer.write(sb.toString());
         } catch (Exception e) {
             e.printStackTrace();
