@@ -156,7 +156,7 @@ public class Worker {
     }
 
     public static LocalDate setEndDate() {
-        System.out.print("Input endDate in format dd:mm:yyyy\n>>");
+        System.out.print("Input endDate in format yyyy-mm-dd\n>>");
         boolean flag=false;
         LocalDate endDate=null;
         String st=new Scanner(System.in).nextLine();

@@ -7,7 +7,7 @@ public class ReplaceIfGreater extends CommandsWithElements {
 
 
     public ReplaceIfGreater() {
-        super("удалить элемент из коллекции по его ключу");
+        super("заменить значение по ключу, если новое значение больше старого");
     }
 
     @Override

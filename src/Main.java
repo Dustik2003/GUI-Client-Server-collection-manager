@@ -11,7 +11,7 @@ import worker.*;
 public class Main {
     public static void main(String[] args) {
         Scanner cin = new Scanner(System.in);
-        FileReader.readFile("output.csv");
+//        FileReader.readFile("output.csv");
         String st=System.getenv("CollectionFile");
         try{
             FileReader.readFile(st);
