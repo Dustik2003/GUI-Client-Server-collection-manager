@@ -23,8 +23,8 @@ public class Save extends Command {
         String path=System.getenv("SaveFile");
         if(path==null){
             System.out.print("Variable wasn't set. Enter the path to the save file\n>>");
+            path= cin.nextLine().trim();
         }
-        path= cin.nextLine().trim();
         while(path.length()<5||(path.length()-path.indexOf("csv"))!=3){
             System.out.print("Invalid file format. Try again\n>>");
             path= cin.nextLine().trim();
