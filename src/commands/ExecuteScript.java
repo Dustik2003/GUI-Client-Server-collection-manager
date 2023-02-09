@@ -20,7 +20,7 @@ public class ExecuteScript extends CommandWithArg {
         }
         while (this.cin.hasNextLine()) {
             String[] commandName = cin.nextLine().trim().split(" ");
-            if (CommandsDict.commandsManeger.containsKey(commandName[0])) {
+            if (CommandsDict.getCommands().containsKey(commandName[0])) {
                 Command cmd = new CommandsDict().getCommandsManger().get(commandName[0]);
                 if (commandName.length > 1) {
                     cmd.setArg(commandName[1]);
