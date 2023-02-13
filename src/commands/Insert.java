@@ -2,21 +2,23 @@ package commands;
 
 import worker.MapWorker;
 
-import java.util.Scanner;
+import java.io.IOException;
 
 public class Insert extends CommandsWithElements {
-    Scanner cin = new Scanner(System.in);
 
     public Insert() {
         super("добавить новый элемент с заданным ключом");
     }
 
     @Override
-    public void execute() {
+    public String execute() throws IOException {
+
+        History.move("insert");
         if (!MapWorker.getWorkers().containsKey(Long.parseLong(getArg()))) {
-            MapWorker.getWorkers().put(Long.parseLong(getArg()), dataLoader());
+            MapWorker.getWorkers().put(Long.parseLong(getArg()), this.worker);
+            return "";
         } else {
-            System.out.println("!!!Map contains entered id!!!");
+            return "!!!Map contains entered id!!!";
         }
     }
 

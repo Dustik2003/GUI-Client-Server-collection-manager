@@ -1,9 +1,10 @@
 package worker;
 
+import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Organization implements Validatable {
+public class Organization implements Validatable, Serializable {
     private Integer employeesCount; //Поле не может быть null, Значение поля должно быть больше 0
     private OrganizationType type; //Поле не может быть null
 

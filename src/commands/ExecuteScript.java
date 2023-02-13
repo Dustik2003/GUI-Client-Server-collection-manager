@@ -1,8 +1,6 @@
 package commands;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.*;
 
 public class ExecuteScript extends CommandWithArg {
     public ExecuteScript() {
@@ -10,33 +8,52 @@ public class ExecuteScript extends CommandWithArg {
     }
 
     @Override
-    public void execute() {
-        try {
-            setCin(new Scanner(new File(arg)));
-        } catch (FileNotFoundException e) {
-            System.out.println("!!!The file wasn't found!!!");
-            new Exit().execute();
-            throw new RuntimeException(e);
+    public String execute() throws IOException {
+//        History.move("execute_script");
+
+        StringBuilder sb=new StringBuilder();
+
+        BufferedReader reader=new BufferedReader(new InputStreamReader(new ByteArrayInputStream(this.getArg().getBytes())));
+
+        if(this.arg.equals("!!!The file wasn't found!!!")){
+            return "";
         }
-        while (this.cin.hasNextLine()) {
-            String[] commandName = cin.nextLine().trim().split(" ");
+
+//        try {
+//            setCin(new Scanner(new File(this.arg.trim())));
+//        } catch (FileNotFoundException e) {
+//            return "!!!The file wasn't found!!!";
+//        }
+        String text;
+        while ((text=reader.readLine())!=null) {
+            String[] commandName = text.trim().split(" ");
             if (CommandsDict.getCommands().containsKey(commandName[0])) {
                 Command cmd = new CommandsDict().getCommandsManger().get(commandName[0]);
                 if (commandName.length > 1) {
-                    cmd.setArg(commandName[1]);
-                    cmd.setCin(cin);
+                    ((CommandWithArg)cmd).setArg(commandName[1]);
+                    if(cmd instanceof CommandsWithElements){
+                        ((CommandsWithElements)cmd).setReader(reader);
+                        ((CommandsWithElements) cmd).loadElem();
+                    }
                 }
                 if (!arg.equals(cmd.getArg())) {
-                    System.out.println(commandName[0]+ ":");
-                    System.out.println();
-                    cmd.execute();
-                    System.out.println("\n");
+                    String res=cmd.execute();
+                    if(res.equals("java eto p****")) {
+                        sb.append(commandName[0]+ ":");
+                        return sb.toString();
+                    }
+                    sb.append(commandName[0]+ ":"+"\n\n"+res+"\n");
                 } else {
-                    System.out.println("!!!File exists command with entered filename!!!");
+                    sb.append("!!!File exists command with entered filename!!!");
                 }
-                History.move(commandName[0]);
             }
         }
+
+        return sb.toString();
     }
 
+
+    public boolean equals(Command cmd) {
+        return this.getDesc().equals(cmd.getDesc());
+    }
 }

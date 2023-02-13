@@ -1,6 +1,8 @@
 package worker;
 
-public enum Status {
+import java.io.Serializable;
+
+public enum Status implements Serializable {
     FIRED(0),
     RECOMMENDED_FOR_PROMOTION(1),
     REGULAR(2);

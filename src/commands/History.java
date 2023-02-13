@@ -1,5 +1,6 @@
 package commands;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class History extends Command {
@@ -9,10 +10,9 @@ public class History extends Command {
         if (history.size() < 11) {
             history.add(command);
         } else {
-            for (int i = 10; i > 0; i--) {
-                history.set(i, history.get(i - 1));
-            }
-            history.set(0, command);
+                history.remove(0);
+            history.add(command);
+//            history.set(0, command);
         }
     }
 
@@ -25,7 +25,9 @@ public class History extends Command {
     }
 
     @Override
-    public void execute() {
-        System.out.println(this.history);
+    public String execute() throws IOException {
+
+        History.move("history");
+        return this.history.toString();
     }
 }

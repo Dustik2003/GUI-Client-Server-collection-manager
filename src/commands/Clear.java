@@ -10,7 +10,8 @@ public class Clear extends Command {
     }
 
     @Override
-    public void execute() {
+    public String execute() {
         MapWorker.getWorkers().clear();
+        return "";
     }
 }

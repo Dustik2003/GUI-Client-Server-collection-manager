@@ -1,9 +1,10 @@
 package worker;
 
+import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Coordinates implements Validatable {
+public class Coordinates implements Validatable, Serializable {
     private Float x; //Поле не может быть null
     private double y;
 

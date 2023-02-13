@@ -25,7 +25,7 @@ public class Main {
                 Command cmd = new CommandsDict().getCommandsManger().get(commandName[0]);
                 if (commandName.length > 1) cmd.setArg(commandName[1]);
                 if (cmd.getArg() != null) {
-                    cmd.execute();
+//                    cmd.execute();
                     History.move(commandName[0]);
                 } else {
                     System.out.println("Arg can't be null");

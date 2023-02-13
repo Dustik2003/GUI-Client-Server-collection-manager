@@ -2,22 +2,26 @@ package commands;
 
 import worker.MapWorker;
 import worker.Status;
+import worker.Worker;
+
+import java.io.IOException;
+import java.util.LinkedHashMap;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class FilterLessThanStatus extends CommandWithArg {
 
 
     @Override
-    public void execute() {
-        int max = Status.valueOf(getArg()).getSt();
-        int i=0;
-        for (Long id : MapWorker.getWorkers().keySet()) {
-            if (MapWorker.getWorkers().get(id).getStatus() != null && max > MapWorker.getWorkers().get(id).getStatus().getSt()) {
-                System.out.println(MapWorker.getWorkers().get(id));
-                continue;
-            }
-            i++;
+    public String execute() throws IOException {
+        int max;
+        try{max = Status.valueOf(this.arg.trim()).getSt();
+        }catch (Exception e){
+            return "Invalid argument";
         }
-        if(i==0)System.out.println("Element with given parameter not found");
+        LinkedHashMap<Long, Worker> workers=new LinkedHashMap(MapWorker.workers.keySet().stream().filter(id->MapWorker.workers.get(id).getStatus()!=null &&MapWorker.workers.get(id).getStatus().getSt()<max ).collect(Collectors.toMap(Function.identity(),MapWorker.getWorkers()::get)));
+
+        return   workers.isEmpty()?"Element with given parameter not found":sort(workers);
     }
 
     public FilterLessThanStatus() {

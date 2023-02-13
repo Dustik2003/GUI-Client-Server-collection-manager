@@ -2,17 +2,17 @@ package commands;
 
 import worker.MapWorker;
 
-import java.util.Collection;
+import java.io.IOException;
+
 
 public class Show extends Command {
 
 
     @Override
-    public void execute() {
-        if(MapWorker.workers.isEmpty()) System.out.println("Collection is empty");
-        for (Long id : MapWorker.getWorkers().keySet()) {
-            System.out.println(id + "=" + MapWorker.getWorkers().get(id).toString());
-        }
+    public String execute() throws IOException {
+        History.move("show");
+        if(MapWorker.workers.isEmpty())return "Collection is empty";
+        else return sort(MapWorker.getWorkers());
     }
 
     public Show() {

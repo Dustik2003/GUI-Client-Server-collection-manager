@@ -1,5 +1,7 @@
 package commands;
 
+import java.io.IOException;
+
 public interface Executable {
-    void execute();
+    String execute() throws IOException;
 }

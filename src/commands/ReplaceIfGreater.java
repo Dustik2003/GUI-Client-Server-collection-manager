@@ -3,6 +3,8 @@ package commands;
 import worker.MapWorker;
 import worker.Worker;
 
+import java.io.IOException;
+
 public class ReplaceIfGreater extends CommandsWithElements {
 
 
@@ -11,13 +13,15 @@ public class ReplaceIfGreater extends CommandsWithElements {
     }
 
     @Override
-    public void execute() {
+    public String execute() throws IOException {
+
+        History.move("replace_if_greater");
         if (MapWorker.getWorkers().containsKey(Long.parseLong(getArg()))) {
-            Worker worker = dataLoader();
             if (worker.moreThan(MapWorker.getWorkers().get(Long.parseLong(getArg()))))
-                MapWorker.getWorkers().replace(Long.parseLong(getArg()), worker);
+                MapWorker.getWorkers().replace(Long.parseLong(getArg()), this.worker);
+            return "";
         } else {
-            System.out.println("Element with entered id wasn't found");
+            return "Element with entered id wasn't found";
         }
     }
 }

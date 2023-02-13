@@ -1,12 +1,13 @@
 package worker;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-public class Worker {
+public class Worker implements Serializable {
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private Date creationDate = new Date(); //Поле не может быть null, Значение этого поля должно генерироваться автоматически
@@ -145,6 +146,9 @@ public class Worker {
         return status;
     }
 
+    public Worker cur(){
+        return this;
+    }
 
     public static Organization setOrganization(Organization organization) {
         while (organization == null && !organization.validate()) {

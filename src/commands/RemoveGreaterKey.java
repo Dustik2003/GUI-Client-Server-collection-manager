@@ -2,6 +2,7 @@ package commands;
 
 import worker.MapWorker;
 
+import java.io.IOException;
 import java.util.*;
 
 public class RemoveGreaterKey extends CommandWithArg {
@@ -12,18 +13,20 @@ public class RemoveGreaterKey extends CommandWithArg {
     }
 
     @Override
-    public void execute() {
+    public String execute() throws IOException {
+
+        History.move("remove_greater_key");
         ArrayList<Long> keys = new ArrayList<>();
         Long minId = Long.parseLong(getArg());
         for (Long id : MapWorker.getWorkers().keySet()) {
             if (id > minId) keys.add(id);
         }
         if(keys.size()==0) {
-            System.out.println("Element with given parameter not found");
-            return;
+            return "Element with given parameter not found";
         }
         for (Long id : keys) {
             MapWorker.getWorkers().remove(id);
         }
+        return "";
     }
 }

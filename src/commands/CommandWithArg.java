@@ -1,5 +1,7 @@
 package commands;
 
+import java.io.IOException;
+
 public class CommandWithArg extends Command {
 
     @Override
@@ -13,7 +15,7 @@ public class CommandWithArg extends Command {
     }
 
     @Override
-    public void execute() {
-
+    public String execute() throws IOException {
+        return "";
     }
 }

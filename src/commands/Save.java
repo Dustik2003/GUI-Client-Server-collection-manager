@@ -4,6 +4,7 @@ import worker.MapWorker;
 import worker.Worker;
 
 import java.io.*;
+import java.util.Scanner;
 
 public class Save extends Command {
     public Save() {
@@ -11,14 +12,14 @@ public class Save extends Command {
     }
 
     @Override
-    public void execute() {
+    public String execute() {
         StringBuilder sb = new StringBuilder();
         sb.append("id,name,coordinates.x,coordinates.y,creationDate,salary,endDate,position,status,organization.employeesCount,organization.type\n");
         for (Long id : MapWorker.getWorkers().keySet()) {
             Worker tmp = MapWorker.getWorkers().get(id);
             sb.append(id + "," + tmp.getName() + "," + tmp.getCoordinates().getX() + "," + tmp.getCoordinates().getY() + "," + tmp.getCreationDate() + "," + tmp.getSalary() + "," + (tmp.getEndDate() == null ? "" : tmp.getEndDate()) + "," + (tmp.getPosition() == null ? "" : tmp.getPosition()) + "," + (tmp.getStatus() == null ? "" : tmp.getStatus()) + "," + tmp.getOrganization().getEmployeesCount() + "," + tmp.getOrganization().getType() + "\n");
         }
-
+        Scanner cin=new Scanner(System.in);
 
         String path=System.getenv("SaveFile");
         if(path==null){
@@ -37,5 +38,6 @@ public class Save extends Command {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return "";
     }
 }

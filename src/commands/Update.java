@@ -10,9 +10,13 @@ public class Update extends CommandsWithElements {
     }
 
     @Override
-    public void execute() {
-        if (MapWorker.getWorkers().containsKey(Long.parseLong(getArg())))
-            MapWorker.getWorkers().replace(Long.parseLong(getArg()), dataLoader());
-        else System.out.println("Element with entered id wasn't found");
+    public String execute() {
+
+        History.move("update");
+        if (MapWorker.getWorkers().containsKey(Long.parseLong(getArg()))) {
+            MapWorker.getWorkers().replace(Long.parseLong(getArg()), this.worker);
+            return "";
+        }
+        else return ("Element with entered id wasn't found");
     }
 }

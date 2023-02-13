@@ -1,6 +1,12 @@
 package commands;
 
 import worker.MapWorker;
+import worker.Worker;
+
+import java.io.IOException;
+import java.util.LinkedHashMap;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class FilterBySalary extends CommandWithArg {
     public FilterBySalary() {
@@ -8,13 +14,15 @@ public class FilterBySalary extends CommandWithArg {
     }
 
     @Override
-    public void execute() {
-        int i=0;
-        for (Long id : MapWorker.getWorkers().keySet()) {
-            if (MapWorker.getWorkers().get(id).getSalary() == Double.parseDouble(this.arg))
-                i++;
-                System.out.println(MapWorker.getWorkers().get(id).toString());
+    public String execute() throws IOException {
+        double salary;
+        try{
+            salary = Double.parseDouble(this.arg.trim());
+        }catch (Exception e){
+            return "Invalid argument";
         }
-        if(i==0) System.out.println("Element with given parameter not found");
+        LinkedHashMap<Long, Worker> workers=new LinkedHashMap(MapWorker.workers.keySet().stream().filter(id->MapWorker.workers.get(id).getSalary()==salary).collect(Collectors.toMap(Function.identity(),MapWorker.getWorkers()::get)));
+
+        return workers.isEmpty()?"Element with given parameter not found":sort(workers);
     }
 }

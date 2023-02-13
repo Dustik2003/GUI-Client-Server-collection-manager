@@ -1,5 +1,7 @@
 package commands;
 
+import java.io.IOException;
+
 public class Help extends Command {
 
 
@@ -8,10 +10,14 @@ public class Help extends Command {
     }
 
     @Override
-    public void execute() {
-        for (String cmd : CommandsDict.commandsManeger.keySet()) {
-            System.out.println(cmd + ":" + CommandsDict.commandsManeger.get(cmd).getDesc());
+    public String execute() throws IOException {
+
+//        History.move("help");
+        StringBuilder sb=new StringBuilder();
+        for (String cmd : CommandsDict.getCommands().keySet()) {
+            sb.append(cmd + ":" + CommandsDict.getCommands().get(cmd).getDesc()+"\n");
         }
+        return sb.toString();
     }
 
 }

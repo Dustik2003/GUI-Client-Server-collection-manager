@@ -1,10 +1,11 @@
 package worker;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Random;
 
-public class MapWorker {
+public class MapWorker implements Serializable {
 
     public static LinkedHashMap<Long, Worker> workers = new LinkedHashMap<>();
     public static Date date=new Date();
