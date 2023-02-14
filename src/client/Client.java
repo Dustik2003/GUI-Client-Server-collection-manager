@@ -49,6 +49,8 @@ public class Client {
             }
 
             String res=getObject(clientSocket).toString();
+
+            System.out.println(res);
             if(res.endsWith("　　　　　／＞　    フ\n" +
                     "　　　　　| 　_　 _|\n" +
                     "　 　　　／`ミ _x 彡\n" +
@@ -57,12 +59,9 @@ public class Client {
                     "　／￣|　　 |　|　|\n" +
                     "　| (￣ヽ＿_ヽ_)_)\n" +
                     "　＼二つ.")){
-
-                System.out.println(res);
                 clientSocket.close();
                 System.exit(0);
             }
-            System.out.println(res);
         }
     }
 
