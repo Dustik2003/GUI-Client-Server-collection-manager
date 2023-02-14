@@ -25,6 +25,6 @@ public class FilterLessThanStatus extends CommandWithArg {
     }
 
     public FilterLessThanStatus() {
-        super("вывести элементы, значение поля status которых меньше заданного");
+        super("РІС‹РІРµСЃС‚Рё СЌР»РµРјРµРЅС‚С‹, Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ status РєРѕС‚РѕСЂС‹С… РјРµРЅСЊС€Рµ Р·Р°РґР°РЅРЅРѕРіРѕ");
     }
 }

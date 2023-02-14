@@ -9,7 +9,7 @@ public class ReplaceIfGreater extends CommandsWithElements {
 
 
     public ReplaceIfGreater() {
-        super("заменить значение по ключу, если новое значение больше старого");
+        super("Р·Р°РјРµРЅРёС‚СЊ Р·РЅР°С‡РµРЅРёРµ РїРѕ РєР»СЋС‡Сѓ, РµСЃР»Рё РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ Р±РѕР»СЊС€Рµ СЃС‚Р°СЂРѕРіРѕ");
     }
 
     @Override

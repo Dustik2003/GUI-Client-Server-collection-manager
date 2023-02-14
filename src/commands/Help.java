@@ -6,7 +6,7 @@ public class Help extends Command {
 
 
     public Help() {
-        super("вывести справку по доступным командам");
+        super("РІС‹РІРµСЃС‚Рё СЃРїСЂР°РІРєСѓ РїРѕ РґРѕСЃС‚СѓРїРЅС‹Рј РєРѕРјР°РЅРґР°Рј");
     }
 
     @Override

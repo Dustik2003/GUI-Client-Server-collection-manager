@@ -7,7 +7,7 @@ import java.io.IOException;
 public class Insert extends CommandsWithElements {
 
     public Insert() {
-        super("добавить новый элемент с заданным ключом");
+        super("РґРѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ СЃ Р·Р°РґР°РЅРЅС‹Рј РєР»СЋС‡РѕРј");
     }
 
     @Override

@@ -6,7 +6,7 @@ public class Clear extends Command {
 
 
     public Clear() {
-        super("очистить коллекцию");
+        super("РѕС‡РёСЃС‚РёС‚СЊ РєРѕР»Р»РµРєС†РёСЋ");
     }
 
     @Override

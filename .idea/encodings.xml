@@ -1,38 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/out/artifacts/testlab5_jar/output.csv" charset="UTF-16" />
-    <file url="file://$PROJECT_DIR$/out/artifacts/testlab5_jar3/output.csv" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/output.csv" charset="UTF-16" />
-    <file url="file://$PROJECT_DIR$/pzdc.csv" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/Fwriter.java" charset="windows-1251" />
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/output.csv" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/Main.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/client/Client.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/client/Serialize.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/client/Serialize.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/commands/Clear.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/commands/CommandsList.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/commands/ExecuteScript.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/commands/Exit.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/commands/FilterBySalary.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/commands/FilterLessThanStatus.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/commands/FilterStartsWithName.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/commands/Help.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/commands/History.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/commands/Info.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/commands/Insert.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/commands/RemoveGreaterKey.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/commands/RemoveKey.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/commands/ReplaceIfGreater.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/commands/Save.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/commands/Show.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/commands/Update.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/server/Server.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/worker/Coordinates.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/worker/MapWorker.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/worker/Organization.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/worker/Worker.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/test.csv" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/test.txt" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/client/Client.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/client/Serialize.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/commands/Clear.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/commands/CommandsList.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/commands/ExecuteScript.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/commands/Exit.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/commands/FilterBySalary.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/commands/FilterLessThanStatus.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/commands/FilterStartsWithName.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/commands/Help.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/commands/History.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/commands/Info.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/commands/Insert.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/commands/RemoveGreaterKey.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/commands/RemoveKey.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/commands/ReplaceIfGreater.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/commands/Save.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/commands/Show.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/commands/Update.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/server/Server.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/worker/Coordinates.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/worker/MapWorker.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/worker/Organization.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/worker/Worker.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test.csv" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

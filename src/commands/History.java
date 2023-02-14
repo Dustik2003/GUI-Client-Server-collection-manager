@@ -17,7 +17,7 @@ public class History extends Command {
     }
 
     public History() {
-        super("вывести последние 11 команд (без их аргументов)");
+        super("РІС‹РІРµСЃС‚Рё РїРѕСЃР»РµРґРЅРёРµ 11 РєРѕРјР°РЅРґ (Р±РµР· РёС… Р°СЂРіСѓРјРµРЅС‚РѕРІ)");
     }
 
     public static ArrayList<String> getHistory() {

@@ -8,14 +8,14 @@ import java.util.Scanner;
 
 
 public class Worker implements Serializable {
-    private String name; //Поле не может быть null, Строка не может быть пустой
-    private Coordinates coordinates; //Поле не может быть null
-    private Date creationDate = new Date(); //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    private double salary; //Значение поля должно быть больше 0
-    private LocalDate endDate; //Поле может быть null
-    private Position position; //Поле может быть null
-    private Status status; //Поле может быть null
-    private Organization organization; //Поле не может быть null
+    private String name; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null, РЎС‚СЂРѕРєР° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚РѕР№
+    private Coordinates coordinates; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null
+    private Date creationDate = new Date(); //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null, Р—РЅР°С‡РµРЅРёРµ СЌС‚РѕРіРѕ РїРѕР»СЏ РґРѕР»Р¶РЅРѕ РіРµРЅРµСЂРёСЂРѕРІР°С‚СЊСЃСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё
+    private double salary; //Р—РЅР°С‡РµРЅРёРµ РїРѕР»СЏ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0
+    private LocalDate endDate; //РџРѕР»Рµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null
+    private Position position; //РџРѕР»Рµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null
+    private Status status; //РџРѕР»Рµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null
+    private Organization organization; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null
 
 
     public Status getStatus() {

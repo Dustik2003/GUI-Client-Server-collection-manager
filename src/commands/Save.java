@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Save extends Command {
     public Save() {
-        super("сохранить коллекцию в файл");
+        super("СЃРѕС…СЂР°РЅРёС‚СЊ РєРѕР»Р»РµРєС†РёСЋ РІ С„Р°Р№Р»");
     }
 
     @Override

@@ -12,15 +12,15 @@ public class MapWorker implements Serializable {
 
 
     public static void fill() {
-        workers.put(getRandId(), new Worker("◊Ó¯‡Ì·Â", new Coordinates(1f, 1), 1d, Status.FIRED, new Organization(123, OrganizationType.GOVERNMENT)));
-        workers.put(getRandId(), new Worker("Ã‡ËÙ", new Coordinates(1f, 1), 12345d, Status.RECOMMENDED_FOR_PROMOTION, new Organization(123, OrganizationType.GOVERNMENT)));
-        workers.put(getRandId(), new Worker("¿ÁËÁı‡Ì", new Coordinates(1f, 1), 12345d, Status.FIRED, new Organization(123, OrganizationType.GOVERNMENT)));
-        workers.put(getRandId(), new Worker("’ÂÈ·‡ÚË", new Coordinates(1f, 1), 12345d, new Organization(123, OrganizationType.GOVERNMENT)));
-        workers.put(getRandId(), new Worker("ÿ‡ÏËÎ¸", new Coordinates(1f, 1), 12345d, new Organization(123, OrganizationType.GOVERNMENT)));
-        workers.put(getRandId(), new Worker("ÿÓ‚ı‡Î", new Coordinates(1f, 1), 12345d, Status.REGULAR, new Organization(123, OrganizationType.GOVERNMENT)));
-        workers.put(getRandId(), new Worker("›ÏËÎ¸", new Coordinates(1f, 1), 12345d, new Organization(123, OrganizationType.GOVERNMENT)));
-        workers.put(getRandId(), new Worker("¿Òı‡·", new Coordinates(1f, 1), 12345d, Status.REGULAR, new Organization(123, OrganizationType.GOVERNMENT)));
-        workers.put(getRandId(), new Worker("¿·Ë", new Coordinates(1f, 1), 12345d, Status.REGULAR, new Organization(123, OrganizationType.GOVERNMENT)));
+        workers.put(getRandId(), new Worker("–ß–æ—Ä—à–∞–Ω–±–µ", new Coordinates(1f, 1), 1d, Status.FIRED, new Organization(123, OrganizationType.GOVERNMENT)));
+        workers.put(getRandId(), new Worker("–ú–∞—Ä–∏—Ñ", new Coordinates(1f, 1), 12345d, Status.RECOMMENDED_FOR_PROMOTION, new Organization(123, OrganizationType.GOVERNMENT)));
+        workers.put(getRandId(), new Worker("–ê–∑–∏–∑—Ö–∞–Ω", new Coordinates(1f, 1), 12345d, Status.FIRED, new Organization(123, OrganizationType.GOVERNMENT)));
+        workers.put(getRandId(), new Worker("–•–µ–π–±–∞—Ç–∏", new Coordinates(1f, 1), 12345d, new Organization(123, OrganizationType.GOVERNMENT)));
+        workers.put(getRandId(), new Worker("–®–∞–º–∏–ª—å", new Coordinates(1f, 1), 12345d, new Organization(123, OrganizationType.GOVERNMENT)));
+        workers.put(getRandId(), new Worker("–®–æ–≤—Ö–∞–ª", new Coordinates(1f, 1), 12345d, Status.REGULAR, new Organization(123, OrganizationType.GOVERNMENT)));
+        workers.put(getRandId(), new Worker("–≠–º–∏–ª—å", new Coordinates(1f, 1), 12345d, new Organization(123, OrganizationType.GOVERNMENT)));
+        workers.put(getRandId(), new Worker("–ê—Å—Ö–∞–±", new Coordinates(1f, 1), 12345d, Status.REGULAR, new Organization(123, OrganizationType.GOVERNMENT)));
+        workers.put(getRandId(), new Worker("–ê—Ä–±–∏", new Coordinates(1f, 1), 12345d, Status.REGULAR, new Organization(123, OrganizationType.GOVERNMENT)));
     }
 
     public MapWorker() {

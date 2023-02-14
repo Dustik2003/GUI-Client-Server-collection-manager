@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Coordinates implements Validatable, Serializable {
-    private Float x; //Поле не может быть null
+    private Float x; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null
     private double y;
 
     public Coordinates(Float x, double y) {

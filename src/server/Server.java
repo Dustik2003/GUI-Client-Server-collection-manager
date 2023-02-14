@@ -27,7 +27,7 @@ public class Server {
 //        ObjectOutputStream oos=new ObjectOutputStream(clientSocket.getOutputStream());
         while (true){
             Socket clientSocket = serverSocket.accept();
-        System.out.print("clients:  " + (++count));
+        System.out.println("clients:  " + (++count));
         while (true) {
             ObjectInputStream commandReader = new ObjectInputStream(clientSocket.getInputStream());
             Command cmd = ((Command) commandReader.readObject());
@@ -36,7 +36,14 @@ public class Server {
 
             String res = cmd.execute();
             oos.writeObject(res);
-            if (res.equals("java eto p****")) break;
+            if (res.endsWith("　　　　　／＞　    フ\n" +
+                    "　　　　　| 　_　 _|\n" +
+                    "　 　　　／`ミ _x 彡\n" +
+                    "　　 　 /　　　 　 |\n" +
+                    "　　　 /　 ヽ　　 ﾉ\n" +
+                    "　／￣|　　 |　|　|\n" +
+                    "　| (￣ヽ＿_ヽ_)_)\n" +
+                    "　＼二つ.")) break;
         }
     }
     }

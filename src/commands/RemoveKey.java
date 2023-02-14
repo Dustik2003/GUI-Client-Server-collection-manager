@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class RemoveKey extends CommandWithArg {
     public RemoveKey() {
-        super("удалить элемент из коллекции по его ключу");
+        super("СѓРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚ РёР· РєРѕР»Р»РµРєС†РёРё РїРѕ РµРіРѕ РєР»СЋС‡Сѓ");
     }
 
     @Override

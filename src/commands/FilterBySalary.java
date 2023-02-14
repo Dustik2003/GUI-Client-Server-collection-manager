@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class FilterBySalary extends CommandWithArg {
     public FilterBySalary() {
-        super("вывести элементы, значение поля salary которых равно заданному");
+        super("РІС‹РІРµСЃС‚Рё СЌР»РµРјРµРЅС‚С‹, Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ salary РєРѕС‚РѕСЂС‹С… СЂР°РІРЅРѕ Р·Р°РґР°РЅРЅРѕРјСѓ");
     }
 
     @Override

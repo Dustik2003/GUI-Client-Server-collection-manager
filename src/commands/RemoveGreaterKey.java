@@ -9,7 +9,7 @@ public class RemoveGreaterKey extends CommandWithArg {
 
 
     public RemoveGreaterKey() {
-        super("удалить из коллекции все элементы, ключ которых превышает заданный");
+        super("СѓРґР°Р»РёС‚СЊ РёР· РєРѕР»Р»РµРєС†РёРё РІСЃРµ СЌР»РµРјРµРЅС‚С‹, РєР»СЋС‡ РєРѕС‚РѕСЂС‹С… РїСЂРµРІС‹С€Р°РµС‚ Р·Р°РґР°РЅРЅС‹Р№");
     }
 
     @Override

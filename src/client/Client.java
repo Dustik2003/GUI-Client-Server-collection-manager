@@ -49,7 +49,16 @@ public class Client {
             }
 
             String res=getObject(clientSocket).toString();
-            if(res.endsWith("java eto p****")){
+            if(res.endsWith("　　　　　／＞　    フ\n" +
+                    "　　　　　| 　_　 _|\n" +
+                    "　 　　　／`ミ _x 彡\n" +
+                    "　　 　 /　　　 　 |\n" +
+                    "　　　 /　 ヽ　　 ﾉ\n" +
+                    "　／￣|　　 |　|　|\n" +
+                    "　| (￣ヽ＿_ヽ_)_)\n" +
+                    "　＼二つ.")){
+
+                System.out.println(res);
                 clientSocket.close();
                 System.exit(0);
             }

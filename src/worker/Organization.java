@@ -5,8 +5,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Organization implements Validatable, Serializable {
-    private Integer employeesCount; //Поле не может быть null, Значение поля должно быть больше 0
-    private OrganizationType type; //Поле не может быть null
+    private Integer employeesCount; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null, Р—РЅР°С‡РµРЅРёРµ РїРѕР»СЏ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0
+    private OrganizationType type; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null
 
 
     public Organization(Integer employeesCount, OrganizationType type) {

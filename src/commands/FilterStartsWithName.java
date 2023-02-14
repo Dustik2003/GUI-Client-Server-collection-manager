@@ -12,7 +12,7 @@ public class FilterStartsWithName extends CommandWithArg {
 
 
     public FilterStartsWithName() {
-        super("вывести элементы, значение поля name которых начинается с заданной подстроки");
+        super("РІС‹РІРµСЃС‚Рё СЌР»РµРјРµРЅС‚С‹, Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ name РєРѕС‚РѕСЂС‹С… РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ Р·Р°РґР°РЅРЅРѕР№ РїРѕРґСЃС‚СЂРѕРєРё");
     }
 
     @Override
