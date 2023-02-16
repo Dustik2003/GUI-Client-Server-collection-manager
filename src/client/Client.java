@@ -1,14 +1,10 @@
 package client;
 
 import commands.*;
-import worker.Worker;
-
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 public class Client {
@@ -24,43 +20,49 @@ public class Client {
             System.out.println("Can't connect to server");
             System.exit(0);
         }
+
         while(true){
-            System.out.print(">>");
-            String[] commandName = cin.nextLine().trim().split(" ");
-            if(commandName[0].equals(""))continue;
-            if (CommandsDict.getCommands().containsKey(commandName[0]) && !commandName[0].equals("save")) {
-                Command cmd = new CommandsDict().getCommandsManger().get(commandName[0]);
-                if (commandName.length > 1) cmd.setArg(commandName[1]);
-                if (cmd.getArg() != null) {
-                    if(commandName[0].trim().equals("execute_script")){
-                        String path=cmd.getArg();
-                        cmd.setArg(loadFile(path));
-                    }
-                    if(cmd instanceof CommandsWithElements)((CommandsWithElements) cmd).loadElem();
-                    sendObj(cmd,clientSocket);
+            try{
+
+                System.out.print(">>");
+                String[] commandName = cin.nextLine().trim().split(" ");
+                if(commandName[0].equals(""))continue;
+                if (CommandsDict.getCommands().containsKey(commandName[0]) && !commandName[0].equals("save")) {
+                    Command cmd = new CommandsDict().getCommandsManger().get(commandName[0]);
+                    if (commandName.length > 1) cmd.setArg(commandName[1]);
+                    if (cmd.getArg() != null) {
+                        if(commandName[0].trim().equals("execute_script")){
+                            String path=cmd.getArg();
+                            cmd.setArg(loadFile(path));
+                        }
+                        if(cmd instanceof CommandsWithElements)((CommandsWithElements) cmd).loadElem();
+                        sendObj(cmd,clientSocket);
 //                    History.move(commandName[0]);
+                    } else {
+                        System.out.println("Arg can't be null");
+                        continue;
+                    }
                 } else {
-                    System.out.println("Arg can't be null");
+                    System.out.println("The Command wasn't found");
                     continue;
                 }
-            } else {
-                System.out.println("The Command wasn't found");
+
+                String res=getObject(clientSocket).toString();
+
+                System.out.println(res);
+                if(res.endsWith(
+                                "　　　　　／＞　    フ\n" +
+                                "　　　　　| 　_　 _|\n" +
+                                "　 　　　／`ミ _x 彡\n" +
+                                "　　 　 /　　　 　 |\n" +
+                                "　　　 /　 ヽ　　 ﾉ\n" +
+                                "　／￣|　　 |　|　|\n" +
+                                "　| (￣ヽ＿_ヽ_)_)\n" +
+                                "　＼二つ.")){
+                    clientSocket.close();
+                    System.exit(0);
+                }}catch(Exception e){
                 continue;
-            }
-
-            String res=getObject(clientSocket).toString();
-
-            System.out.println(res);
-            if(res.endsWith("　　　　　／＞　    フ\n" +
-                    "　　　　　| 　_　 _|\n" +
-                    "　 　　　／`ミ _x 彡\n" +
-                    "　　 　 /　　　 　 |\n" +
-                    "　　　 /　 ヽ　　 ﾉ\n" +
-                    "　／￣|　　 |　|　|\n" +
-                    "　| (￣ヽ＿_ヽ_)_)\n" +
-                    "　＼二つ.")){
-                clientSocket.close();
-                System.exit(0);
             }
         }
     }
