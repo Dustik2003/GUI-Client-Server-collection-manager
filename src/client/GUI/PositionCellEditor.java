@@ -1,10 +1,13 @@
 package client.GUI;
 
+import client.GuiClient;
+import commands.ChangeWorker;
 import worker.Position;
 
 import javax.swing.*;
 import javax.swing.table.TableCellEditor;
 import java.awt.*;
+import java.io.IOException;
 
 public class PositionCellEditor extends AbstractCellEditor implements TableCellEditor {
 
@@ -28,6 +31,13 @@ public class PositionCellEditor extends AbstractCellEditor implements TableCellE
         int indPos= position.getSelectedIndex();
         Position pos=indPos<0?null:Position.values()[indPos-1];
         WorkersTable.workers.get(Long.parseLong(WorkersTable.getTable().getValueAt(row, 1) + "")).setPosition(pos);
+
+        try {
+            GuiClient.sendObj(new ChangeWorker(Long.parseLong(WorkersTable.getTable().getValueAt(row, 1) + ""),pos,column));
+            GuiClient.getObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return pos;
     }
 }

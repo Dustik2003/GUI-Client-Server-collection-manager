@@ -1,10 +1,13 @@
 package client.GUI;
 
+import client.GuiClient;
+import commands.ChangeWorker;
 import worker.Organization;
 import worker.OrganizationType;
 import javax.swing.*;
 import javax.swing.table.TableCellEditor;
 import java.awt.*;
+import java.io.IOException;
 
 public class OrganizationTypeCellEditor extends AbstractCellEditor implements TableCellEditor {
 
@@ -30,6 +33,14 @@ public class OrganizationTypeCellEditor extends AbstractCellEditor implements Ta
         Organization org=WorkersTable.workers.get(Long.parseLong(WorkersTable.getTable().getValueAt(row, 1) + "")).getOrganization();
         org.setType(ot);
         WorkersTable.workers.get(Long.parseLong(WorkersTable.getTable().getValueAt(row, 1) + "")).setOrganization(org);
+
+        try {
+            GuiClient.sendObj(new ChangeWorker(Long.parseLong(WorkersTable.getTable().getValueAt(row, 1) + ""),ot,column));
+
+            GuiClient.getObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return ot;
     }
 }

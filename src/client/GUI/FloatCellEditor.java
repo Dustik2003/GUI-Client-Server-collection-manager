@@ -1,10 +1,13 @@
 package client.GUI;
 
+import client.GuiClient;
+import commands.ChangeWorker;
 import worker.Coordinates;
 
 import javax.swing.*;
 import javax.swing.table.TableCellEditor;
 import java.awt.*;
+import java.io.IOException;
 
 public class FloatCellEditor extends AbstractCellEditor implements TableCellEditor {
     int row,column;
@@ -32,10 +35,18 @@ public class FloatCellEditor extends AbstractCellEditor implements TableCellEdit
             return Float.parseFloat(curVal);
         }
         float num = Float.parseFloat(textField.getText()+"");
-
-        Coordinates coordinates = WorkersTable.workers.get(Long.parseLong(WorkersTable.getTable().getValueAt(row, 1) + "")).getCoordinates();
+        long id=Long.parseLong(WorkersTable.getTable().getValueAt(row, 1) + "");
+        Coordinates coordinates = WorkersTable.workers.get(id).getCoordinates();
         coordinates.setX(num);
-        WorkersTable.workers.get(Long.parseLong(WorkersTable.getTable().getValueAt(row, 1) + "")).setCoordinates(coordinates);
+        WorkersTable.workers.get(id).setCoordinates(coordinates);
+        WorkersTable.getTable().getModel().setValueAt(num, row, column);
+        try {
+            GuiClient.sendObj(new ChangeWorker(id,num,column));
+            GuiClient.getObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return num;
     }
 }

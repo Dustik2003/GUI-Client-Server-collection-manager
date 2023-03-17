@@ -1,10 +1,13 @@
 package client.GUI;
 
+import client.GuiClient;
+import commands.ChangeWorker;
 import worker.Coordinates;
 
 import javax.swing.*;
 import javax.swing.table.TableCellEditor;
 import java.awt.*;
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class DoubleCellEditor extends AbstractCellEditor implements TableCellEditor {
@@ -42,6 +45,13 @@ public class DoubleCellEditor extends AbstractCellEditor implements TableCellEdi
         else
             WorkersTable.workers.get(Long.parseLong(WorkersTable.getTable().getValueAt(row,1)+"")).setSalary(num);
         WorkersTable.getTable().getModel().setValueAt(num, row, column);
+
+        try {
+            GuiClient.sendObj(new ChangeWorker(Long.parseLong(WorkersTable.getTable().getValueAt(row, 1) + ""),num,column));
+            System.out.println(GuiClient.getObject());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println(WorkersTable.workers);
         return num;
     }

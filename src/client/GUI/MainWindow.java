@@ -13,16 +13,16 @@ import java.util.Map;
 import java.util.Vector;
 
 public class MainWindow{
-    JFrame jFrame;
+    static JFrame jFrame;
     static  JTabbedPane pane;
     String owner;
+    static Container panel;
     static LinkedHashMap<Long,Worker> workers;
     public MainWindow(String owner){
         this.owner=owner;
         this.jFrame=new JFrame("Ashalet");
         this.pane=new JTabbedPane();
-        JPanel panel2=new JPanel();
-        Container panel=new JFrame().getContentPane();
+        panel=new JFrame().getContentPane();
 //        FileReader.readFile("output.csv");
 //        new MapWorker();
         Container header =new JFrame().getContentPane();
@@ -51,6 +51,7 @@ public class MainWindow{
 //        this.jFrame.add(new JButton("qwertyui"));
         WorkersTable.workers=workers;
         panel.add(new JScrollPane(WorkersTable.getTable()));
+        System.out.println(WorkersTable.getTable());
 //        this.jFrame.setBounds(500,500,700,700);
         panel.setVisible(true);
         pane.addTab("Table",panel);

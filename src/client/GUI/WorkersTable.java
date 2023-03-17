@@ -26,6 +26,9 @@ public class WorkersTable {
     static String owner="Loginity";
     public static LinkedHashMap<Long,Worker> workers;
 
+    public static void setjTable(JTable jTable) {
+        WorkersTable.jTable = jTable;
+    }
 
     public static TableRowSorter<TableModel> sorter;
     public static JTable getTable(){
@@ -35,7 +38,7 @@ public class WorkersTable {
 
                 @Override
                 public boolean isCellEditable(int i, int i1) {
-                    return (owner.equals(this.getValueAt(i,0 ).toString()) && i1!=5 && i1>1 );
+                    return (owner.equals(this.getValueAt(i,0 ).toString()) && i1!=5 && i1>2 );
                 }
 
             };

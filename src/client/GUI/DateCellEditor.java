@@ -1,8 +1,12 @@
 package client.GUI;
 
+import client.GuiClient;
+import commands.ChangeWorker;
+
 import javax.swing.*;
 import javax.swing.table.TableCellEditor;
 import java.awt.*;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
@@ -35,6 +39,14 @@ class DateCellEditor extends AbstractCellEditor implements TableCellEditor {
         LocalDate date=LocalDate.parse(textField.getText());
         WorkersTable.workers.get(Long.parseLong(WorkersTable.getTable().getValueAt(row,1)+"")).setEndDate(date);
         WorkersTable.getTable().getModel().setValueAt(date, row, column);
+
+        try {
+            GuiClient.sendObj(new ChangeWorker(Long.parseLong(WorkersTable.getTable().getValueAt(row, 1) + ""),date,column));
+
+            GuiClient.getObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return date;
     }
 }

@@ -1,11 +1,14 @@
 package client.GUI;
 
+import client.GuiClient;
+import commands.ChangeWorker;
 import worker.Position;
 import worker.Status;
 
 import javax.swing.*;
 import javax.swing.table.TableCellEditor;
 import java.awt.*;
+import java.io.IOException;
 
 public class StatusCellEditor extends AbstractCellEditor implements TableCellEditor {
 
@@ -31,6 +34,14 @@ public class StatusCellEditor extends AbstractCellEditor implements TableCellEdi
         System.out.println(indStat);
         Status status=indStat<0?null:Status.values()[indStat-1];
         WorkersTable.workers.get(Long.parseLong(WorkersTable.getTable().getValueAt(row, 1) + "")).setStatus(status);
+
+        try {
+            GuiClient.sendObj(new ChangeWorker(Long.parseLong(WorkersTable.getTable().getValueAt(row, 1) + ""),status,column));
+
+            GuiClient.getObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return status;
     }
 }

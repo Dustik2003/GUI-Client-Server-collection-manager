@@ -47,7 +47,12 @@ public class ClientThread extends Thread {
                 ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
                 ForkJoinPool forkJoinPool=new ForkJoinPool();
                 res =forkJoinPool.invoke(cmd);
-                oos.writeObject(res);
+                if(res.equals("update")){
+                    oos.writeObject(MapWorker.getWorkers());
+                    System.out.println(MapWorker.getWorkers());
+                    continue;
+                }
+                else oos.writeObject(res);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -60,6 +65,7 @@ public class ClientThread extends Thread {
                     "　／￣|　　 |　|　|\n" +
                     "　| (￣ヽ＿_ヽ_)_)\n" +
                     "　＼二つ.")) break;
+
         }
     }
 
