@@ -145,7 +145,6 @@ public class WorkerLoader {
                             DefaultTableModel model= (DefaultTableModel) WorkersTable.getTable().getModel();
                             model.addRow(new Object[]{worker.getOwner(),MapWorker.id,worker.getName(),worker.getCoordinates().getX(),worker.getCoordinates().getX(),convertToLocalDateViaInstant( worker.getCreationDate()),worker.getSalary(),worker.getEndDate(),worker.getPosition(),worker.getStatus(),worker.getOrganization().getEmployeesCount(),worker.getOrganization().getType()});
 
-
                         }
                         else{
                             if(MapWorker.getWorkers().keySet().contains(Long.parseLong(id.getText()))){
