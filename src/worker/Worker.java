@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 
 public class Worker implements Serializable {
+    private String owner;
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private Date creationDate = new Date(); //Поле не может быть null, Значение этого поля должно генерироваться автоматически
@@ -17,6 +18,9 @@ public class Worker implements Serializable {
     private Status status; //Поле может быть null
     private Organization organization; //Поле не может быть null
 
+    public String getOwner() {
+        return owner;
+    }
 
     public Status getStatus() {
         return status;
@@ -58,7 +62,7 @@ public class Worker implements Serializable {
         return name;
     }
 
-    public static Coordinates setCoordinates(Coordinates coordinates) {
+    public Coordinates setCoordinates(Coordinates coordinates) {
         boolean flag = false;
         while (coordinates == null || !coordinates.validate() || flag) {
             flag = false;
@@ -150,13 +154,8 @@ public class Worker implements Serializable {
         return this;
     }
 
-    public static Organization setOrganization(Organization organization) {
-        while (organization == null && !organization.validate()) {
-            System.out.print("!!!Input organization again!!!(Organization can't be null, emloyees count must be more than 0 and OrganizationType takes one of the values:\nGOVERNMENT,\nTRUST,\nOPEN_JOINT_STOCK_COMPANY)\n>>");
-
-            organization = new Organization(new Scanner(System.in).nextInt(), OrganizationType.valueOf(new Scanner(System.in).nextLine()));
-        }
-        return organization;
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
 
     public static LocalDate setEndDate() {
@@ -199,7 +198,7 @@ public class Worker implements Serializable {
 
         this.salary = salary;
         this.status = status;
-        this.organization = setOrganization(organization);
+        this.organization =organization;
     }
 
 
@@ -207,7 +206,7 @@ public class Worker implements Serializable {
         this.name = setName(name);
         this.coordinates = setCoordinates(coordinates);
         this.salary = salary;
-        this.organization = setOrganization(organization);
+        this.organization = organization;
 
     }
     public Worker(String name, Coordinates coordinates, double salary, Position position, Status status, Organization organization) {
@@ -217,7 +216,7 @@ public class Worker implements Serializable {
         this.name = name;
         this.position = position;
         this.status = status;
-        this.organization = setOrganization(organization);
+        this.organization = organization;
     }
 
     public Worker(String name, Coordinates coordinates, Date creationDate, double salary, LocalDate endDate, Position position, Status status, Organization organization) {
@@ -241,14 +240,52 @@ public class Worker implements Serializable {
         this.organization = organization;
     }
 
+    public Worker(String name, Coordinates coordinates, double salary, LocalDate endDate, Position position, Status status, Organization organization, String user) {
+        this.name = name;
+        this.coordinates = coordinates;
+        this.salary = salary;
+        this.endDate = endDate;
+        this.position = position;
+        this.status = status;
+        this.organization = organization;
+        this.owner=user;
+    }
 
 
+    public Worker(String name, Coordinates coordinates, Date creationDate, double salary, LocalDate endDate, Position position, Status status, Organization organization, String user) {
+        this.name = name;
+        this.coordinates = coordinates;
+        this.creationDate = creationDate;
+        this.salary = salary;
+        this.endDate = endDate;
+        this.position = position;
+        this.status = status;
+        this.organization = organization;
+        this.owner = user;
+    }
 
+    public Worker(String owner, String name, Coordinates coordinates, double salary, Organization organization) {
+        this.owner = owner;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.salary = salary;
+        this.organization = organization;
+    }
+
+    public Worker(String owner, String name, Coordinates coordinates, double salary, Status status, Organization organization) {
+        this.owner = owner;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.salary = salary;
+        this.status = status;
+        this.organization = organization;
+    }
 
     @Override
     public String toString() {
         return "Worker{" +
-                "name='" + name + '\'' +
+                "owner='" + owner + '\'' +
+                ", name='" + name + '\'' +
                 ", coordinates=" + coordinates +
                 ", creationDate=" + creationDate +
                 ", salary=" + salary +
@@ -257,6 +294,22 @@ public class Worker implements Serializable {
                 ", status=" + status +
                 ", organization=" + organization +
                 '}';
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public Worker(String name) {

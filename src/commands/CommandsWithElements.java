@@ -4,6 +4,7 @@ import worker.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -19,48 +20,6 @@ public class CommandsWithElements extends CommandWithArg {
     }
 
 
-//    boolean yesOrNo(String field) {
-//        if (!this.stream)
-//            System.out.println("Input y/n if you want input " + field);
-//        if (cin.nextLine().equals("y"))
-//            return true;
-//        return false;
-//    }
-
-//    protected Worker dataLoader() {
-//        if (!this.stream) {
-//            System.out.print("Input name:\n>>");
-//            String name = Worker.setName(cin.nextLine());
-//            Float x = Coordinates.setX();
-//            double y = Coordinates.setY();
-//            Coordinates coordinates = Worker.setCoordinates(new Coordinates(x, y));
-//            double salary=Worker.setSalary();
-//            LocalDate endDate=Worker.setEndDate();
-//            Position position=Worker.setPosition();
-//            Status status=Worker.setStatus();
-//            Organization organization = Worker.setOrganization(new Organization(Organization.setEmployeesCount(), Organization.setType()));
-//            return new Worker(Worker.setName(name), coordinates, salary,endDate,position,status, organization);
-//        } else {
-//            String name = cin.nextLine();
-//            Float x = cin.nextFloat();
-//            double y = cin.nextDouble();
-//            double salary=cin.nextDouble();
-//            String st= cin.nextLine();
-//            LocalDate endDate=st.equals("")?null:LocalDate.parse(st);
-//            cin.nextLine();
-//            String posStat=cin.nextLine();
-//            Position position=posStat.equals("")?null:Position.valueOf(posStat);
-//            posStat=cin.nextLine();
-//            Status status=posStat.equals("")?null:Status.valueOf(posStat);
-//            int employeesCount = cin.nextInt();
-//            cin.nextLine();
-//            OrganizationType organizationType = OrganizationType.valueOf(cin.nextLine());
-//            return new Worker(Worker.setName(name), Worker.setCoordinates(new Coordinates(x, y)), salary,endDate,position,status, Worker.setOrganization(new Organization(employeesCount, organizationType)));
-//        }
-//    }
-
-
-
     public void loadElem() throws IOException {
         if (!this.stream) {
             Scanner cin=new Scanner(System.in);
@@ -68,13 +27,14 @@ public class CommandsWithElements extends CommandWithArg {
             String name = Worker.setName(cin.nextLine());
             Float x = Coordinates.setX();
             double y = Coordinates.setY();
-            Coordinates coordinates = Worker.setCoordinates(new Coordinates(x, y));
+            Coordinates coordinates = new Coordinates(x, y);
             double salary=Worker.setSalary();
             LocalDate endDate=Worker.setEndDate();
             Position position=Worker.setPosition();
             Status status=Worker.setStatus();
-            Organization organization = Worker.setOrganization(new Organization(Organization.setEmployeesCount(), Organization.setType()));
-            this.worker =new Worker(Worker.setName(name), coordinates, salary,endDate,position,status, organization);
+            Organization organization = new Organization(Organization.setEmployeesCount(), Organization.setType());
+            System.out.println(this.login);
+            this.worker =new Worker(Worker.setName(name), coordinates, salary,endDate,position,status, organization,this.login);
             return;
         }
         String name = reader.readLine();
@@ -91,7 +51,7 @@ public class CommandsWithElements extends CommandWithArg {
         int employeesCount = Integer.parseInt(reader.readLine().trim());
 //        reader.readLine().trim();
         OrganizationType organizationType = OrganizationType.valueOf(reader.readLine().trim());
-        this.worker = new Worker(Worker.setName(name), Worker.setCoordinates(new Coordinates(x, y)), salary,endDate,position,status, Worker.setOrganization(new Organization(employeesCount, organizationType)));
+        this.worker = new Worker(Worker.setName(name), new Coordinates(x, y), salary,endDate,position,status, new Organization(employeesCount, organizationType),this.login);
 
     }
 
@@ -99,7 +59,7 @@ public class CommandsWithElements extends CommandWithArg {
 
 
     @Override
-    public String execute() throws IOException {
+    public String execute() throws IOException, ClassNotFoundException, SQLException {
 return "";
     }
 
@@ -109,11 +69,6 @@ return "";
     }
 
 
-    //    @Override
-//    public void setCin(Scanner cin) {
-//        super.setCin(cin);
-//        this.stream = true;
-//    }
 
     @Override
     public void setArg(String arg) {
@@ -123,5 +78,10 @@ return "";
     public CommandsWithElements(String desc) {
         super(desc);
         this.stream = false;
+    }
+
+    @Override
+    public void setLogin(String login) {
+        super.setLogin(login);
     }
 }

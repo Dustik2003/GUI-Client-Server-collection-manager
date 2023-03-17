@@ -3,11 +3,11 @@ package worker;
 import java.io.Serializable;
 
 public enum Position implements Serializable {
-    MANAGER(4),
-    HEAD_OF_DIVISION(3),
-    DEVELOPER(2),
+    CLEANER(0),
     BAKER(1),
-    CLEANER(0);
+    DEVELOPER(2),
+    HEAD_OF_DIVISION(3),
+    MANAGER(4);
 
     int ps;
 

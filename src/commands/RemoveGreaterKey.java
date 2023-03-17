@@ -19,7 +19,7 @@ public class RemoveGreaterKey extends CommandWithArg {
         ArrayList<Long> keys = new ArrayList<>();
         Long minId = Long.parseLong(getArg());
         for (Long id : MapWorker.getWorkers().keySet()) {
-            if (id > minId) keys.add(id);
+            if (id > minId && MapWorker.getWorkers().get(id).getOwner().equals(this.login)) keys.add(id);
         }
         if(keys.size()==0) {
             return "Element with given parameter not found";

@@ -1,6 +1,7 @@
 package commands;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class CommandWithArg extends Command {
 
@@ -15,7 +16,12 @@ public class CommandWithArg extends Command {
     }
 
     @Override
-    public String execute() throws IOException {
+    public String execute() throws IOException, ClassNotFoundException, SQLException {
         return "";
+    }
+
+    @Override
+    public void setLogin(String login) {
+        super.setLogin(login);
     }
 }

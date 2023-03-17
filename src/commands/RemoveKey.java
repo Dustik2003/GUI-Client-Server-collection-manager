@@ -13,9 +13,17 @@ public class RemoveKey extends CommandWithArg {
     public String execute() throws IOException {
 
         History.move("remove_key");
+
+
+
         if (MapWorker.getWorkers().containsKey(Long.parseLong(getArg()))) {
-            MapWorker.getWorkers().remove(Long.parseLong(getArg()));
-            return "";
+            if(MapWorker.getWorkers().get(Long.parseLong(getArg())).getOwner().equals(this.login)) {
+                MapWorker.getWorkers().remove(Long.parseLong(getArg()));
+                return "";
+            }
+            else{
+                return "You are not the owner of the entered element";
+            }
         }
         else return "Element with entered id wasn't found";
     }

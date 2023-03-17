@@ -14,8 +14,14 @@ public class Update extends CommandsWithElements {
 
         History.move("update");
         if (MapWorker.getWorkers().containsKey(Long.parseLong(getArg()))) {
-            MapWorker.getWorkers().replace(Long.parseLong(getArg()), this.worker);
-            return "";
+            if(MapWorker.getWorkers().get(Long.parseLong(getArg())).getOwner().equals(this.login)) {
+                MapWorker.getWorkers().replace(Long.parseLong(getArg()), this.worker);
+                return "";
+            }
+            else{
+                return "You are not the owner of the entered element";
+            }
+
         }
         else return ("Element with entered id wasn't found");
     }

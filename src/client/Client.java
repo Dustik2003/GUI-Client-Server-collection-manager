@@ -1,14 +1,17 @@
 package client;
 
 import commands.*;
+import worker.Worker;
+
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 public class Client {
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) throws IOException{
 
         Scanner cin = new Scanner(System.in);
         SocketChannel clientSocket=null;
@@ -20,15 +23,32 @@ public class Client {
             System.out.println("Can't connect to server");
             System.exit(0);
         }
+        boolean tmp=(CheckInput.checkInt("!!Enter any number for authorization!!\n!!Enter 0 for registration!!\n>>")==0);
+        LogAndPass logAndPass=new LogAndPass(CheckInput.checkString("Enter Login\n>>"),CheckInput.checkString("Enter Password\n>>"),tmp);
+        sendObj(logAndPass,clientSocket);
+        if(!(boolean)getObject(clientSocket)){
+            System.out.println("!!Failed!!");
+            clientSocket.close();
+            System.exit(0);
+        }else {
+            System.out.println("You have successfully logged in.");
+            sendObj("qwer",clientSocket);
+            LinkedHashMap<Long,Worker> workers=(LinkedHashMap<Long,Worker>) getObject(clientSocket);
+//            LinkedHashMap<Long,Worker> workers= (LinkedHashMap<Long,Worker>) getObject(clientSocket);
+            System.out.println(workers);
+        }
+
+
+
 
         while(true){
             try{
-
                 System.out.print(">>");
                 String[] commandName = cin.nextLine().trim().split(" ");
                 if(commandName[0].equals(""))continue;
                 if (CommandsDict.getCommands().containsKey(commandName[0]) && !commandName[0].equals("save")) {
                     Command cmd = new CommandsDict().getCommandsManger().get(commandName[0]);
+                    cmd.setLogin(logAndPass.getLogin());
                     if (commandName.length > 1) cmd.setArg(commandName[1]);
                     if (cmd.getArg() != null) {
                         if(commandName[0].trim().equals("execute_script")){
@@ -62,7 +82,7 @@ public class Client {
                     clientSocket.close();
                     System.exit(0);
                 }}catch(Exception e){
-                continue;
+                System.exit(0);
             }
         }
     }
@@ -111,20 +131,5 @@ public class Client {
         }
         return sb.toString();
     }
-
-//    public static String loadFile(String path) throws IOException {
-//        StringBuilder sb=new StringBuilder();
-//        BufferedReader reader=new BufferedReader(new InputStreamReader(new FileInputStream(new File(path))));
-//        String test;
-//        while((test= reader.readLine())!=null){
-//            if(test.contains("execute_script")){
-//                sb.append(loadFile(test.trim().split(" ")[1]));
-//                continue;
-//            }
-//            sb.append(test+"\n");
-//        }
-//        return sb.toString();
-//    }
-
 
 }

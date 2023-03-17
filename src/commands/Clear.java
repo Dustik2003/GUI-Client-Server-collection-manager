@@ -11,7 +11,15 @@ public class Clear extends Command {
 
     @Override
     public String execute() {
-        MapWorker.getWorkers().clear();
+
+        for(Long id:MapWorker.getWorkers().keySet()){
+
+            if(MapWorker.getWorkers().get(id).getOwner().equals(this.login)){
+                MapWorker.getWorkers().remove(id);
+            }
+
+        }
+
         return "";
     }
 }

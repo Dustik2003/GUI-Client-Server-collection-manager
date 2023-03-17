@@ -1,6 +1,7 @@
 package commands;
 
 import java.io.*;
+import java.util.concurrent.ForkJoinPool;
 
 public class ExecuteScript extends CommandWithArg {
     public ExecuteScript() {
@@ -37,7 +38,9 @@ public class ExecuteScript extends CommandWithArg {
                     }
                 }
                 if (!arg.equals(cmd.getArg())) {
-                    String res=cmd.execute();
+                    ForkJoinPool forkJoinPool=new ForkJoinPool();
+
+                    String res=forkJoinPool.invoke(cmd);
                     if(res.equals("　　　　　／＞　    フ\n" +
                             "　　　　　| 　_　 _|\n" +
                             "　 　　　／`ミ _x 彡\n" +

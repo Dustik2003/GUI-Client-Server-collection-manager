@@ -20,4 +20,25 @@ public class DateParser {
         long seconds = Integer.parseInt(time[2]) + hours * 3600L + mins * 60L;
         return new Date((years - 2) / 4 * 31622400000L + (years - ((years - 2) / 4)) * 31536000000L + seconds * 1000);
     }
+
+
+    public static int getYear(String dateLine){
+        return Integer.parseInt(dateLine.split(" ")[5]);
+    }
+
+    public static int getMonth(String dateLine){
+        int i=0;
+        String[] dates = dateLine.split(" ");
+        for (Months m : Months.values()) {
+            if (dates[1].equals(m.toString()))break;
+            i++;
+        }
+        return i;
+    }
+
+    public static int getDay(String dateLine){
+        return Integer.parseInt(dateLine.split(" ")[2]);
+    }
+
+
 }

@@ -57,8 +57,17 @@ public class Organization implements Validatable, Serializable {
         return type;
     }
 
+    public void setType(OrganizationType type) {
+        this.type = type;
+    }
+
     public Integer getEmployeesCount() {
         return employeesCount;
+    }
+
+
+    public void setEmployeesCount(Integer employeesCount) {
+        this.employeesCount = employeesCount;
     }
 
     public OrganizationType getType() {
@@ -72,9 +81,7 @@ public class Organization implements Validatable, Serializable {
 
     @Override
     public String toString() {
-        return "Organization{" +
-                "employeesCount=" + employeesCount +
-                ", type=" + type +
-                '}';
+        return "count=" + employeesCount +
+                ", " + type;
     }
 }

@@ -9,18 +9,17 @@ public class MapWorker implements Serializable {
 
     public static LinkedHashMap<Long, Worker> workers = new LinkedHashMap<>();
     public static Date date=new Date();
-
-
+    public static long id=0;
     public static void fill() {
-        workers.put(getRandId(), new Worker("Чоршанбе", new Coordinates(1f, 1), 1d, Status.FIRED, new Organization(123, OrganizationType.GOVERNMENT)));
-        workers.put(getRandId(), new Worker("Мариф", new Coordinates(1f, 1), 12345d, Status.RECOMMENDED_FOR_PROMOTION, new Organization(123, OrganizationType.GOVERNMENT)));
-        workers.put(getRandId(), new Worker("Азизхан", new Coordinates(1f, 1), 12345d, Status.FIRED, new Organization(123, OrganizationType.GOVERNMENT)));
-        workers.put(getRandId(), new Worker("Хейбати", new Coordinates(1f, 1), 12345d, new Organization(123, OrganizationType.GOVERNMENT)));
-        workers.put(getRandId(), new Worker("Шамиль", new Coordinates(1f, 1), 12345d, new Organization(123, OrganizationType.GOVERNMENT)));
-        workers.put(getRandId(), new Worker("Шовхал", new Coordinates(1f, 1), 12345d, Status.REGULAR, new Organization(123, OrganizationType.GOVERNMENT)));
-        workers.put(getRandId(), new Worker("Эмиль", new Coordinates(1f, 1), 12345d, new Organization(123, OrganizationType.GOVERNMENT)));
-        workers.put(getRandId(), new Worker("Асхаб", new Coordinates(1f, 1), 12345d, Status.REGULAR, new Organization(123, OrganizationType.GOVERNMENT)));
-        workers.put(getRandId(), new Worker("Арби", new Coordinates(1f, 1), 12345d, Status.REGULAR, new Organization(123, OrganizationType.GOVERNMENT)));
+        workers.put(getRandId(), new Worker("Loginity","Чоршанбе", new Coordinates(123f, 123), 1d, Status.FIRED, new Organization(123, OrganizationType.GOVERNMENT)));
+        workers.put(getRandId(), new Worker("qwer","Мариф", new Coordinates(455f, 1), 12345d, Status.RECOMMENDED_FOR_PROMOTION, new Organization(123, OrganizationType.GOVERNMENT)));
+        workers.put(getRandId(), new Worker("qwer","Азизхан", new Coordinates(989f, 28), 12345d, Status.FIRED, new Organization(123, OrganizationType.GOVERNMENT)));
+        workers.put(getRandId(), new Worker("User","Хейбати", new Coordinates(050f, 39), 12345d, new Organization(123, OrganizationType.GOVERNMENT)));
+        workers.put(getRandId(), new Worker("Loginity","Шамиль", new Coordinates(940f, 1), 12345d, new Organization(123, OrganizationType.GOVERNMENT)));
+        workers.put(getRandId(), new Worker("zxcvb","Шовхал", new Coordinates(409f, 4671), 12345d, Status.REGULAR, new Organization(123, OrganizationType.GOVERNMENT)));
+        workers.put(getRandId(), new Worker("asadfgg","Эмиль", new Coordinates(1250f, 567), 12345d, new Organization(123, OrganizationType.GOVERNMENT)));
+        workers.put(getRandId(), new Worker("asadfgg","Асхаб", new Coordinates(1000f, 594), 12345d, Status.REGULAR, new Organization(123, OrganizationType.GOVERNMENT)));
+        workers.put(getRandId(), new Worker("qwer","Арби", new Coordinates(565f, 642), 12345d, Status.REGULAR, new Organization(123, OrganizationType.GOVERNMENT)));
     }
 
     public MapWorker() {
@@ -37,9 +36,15 @@ public class MapWorker implements Serializable {
     }
 
     public static LinkedHashMap<Long, Worker> getWorkers() {
+        if(workers.equals(null)){
+
+        }
         return workers;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
     @Override
     public String toString() {

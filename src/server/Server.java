@@ -3,6 +3,7 @@ package server;
 import commands.Command;
 import commands.Exit;
 import commands.History;
+//import worker.FileReader;
 import worker.FileReader;
 import worker.MapWorker;
 
@@ -11,9 +12,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 
 public class Server {
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException {
         String st=System.getenv("CollectionFile");
         try{
             FileReader.readFile(st);
@@ -36,7 +38,8 @@ public class Server {
 
             String res = cmd.execute();
             oos.writeObject(res);
-            if (res.endsWith("　　　　　／＞　    フ\n" +
+            if (res.endsWith(
+                    "　　　　　／＞　    フ\n" +
                     "　　　　　| 　_　 _|\n" +
                     "　 　　　／`ミ _x 彡\n" +
                     "　　 　 /　　　 　 |\n" +
